@@ -1,7 +1,15 @@
-
-import { ResumeValuss } from "./validation"
+import { Prisma } from "@prisma/client";
+import { ResumeValues } from "./validation";
 export interface EdiotrFormProps {
-    resumeData: ResumeValuss
-    setResumeData: (data: ResumeValuss) => void
-
+  resumeData: ResumeValues;
+  setResumeData: (data: ResumeValues) => void;
 }
+
+export const resumeDataInclude = {
+  workExperiences: true,
+  Education: true,
+} satisfies Prisma.ResumeInclude;
+
+export type ResumeServerData = Prisma.ResumeGetPayload<{
+  include: typeof resumeDataInclude;
+}>;

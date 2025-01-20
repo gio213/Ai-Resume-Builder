@@ -12,6 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+import GenerateSummaryBtn from "./GenerateSummaryBtn";
 const SummaryForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
   const form = useForm<SummaryValues>({
     resolver: zodResolver(summarySchema),
@@ -53,6 +54,12 @@ const SummaryForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
                   />
                 </FormControl>
                 <FormMessage />
+                <GenerateSummaryBtn
+                  resumeData={resumeData}
+                  onSumarryGenerated={(summary) =>
+                    form.setValue("summary", summary)
+                  }
+                />
               </FormItem>
             )}
           />

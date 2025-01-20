@@ -1,13 +1,24 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { steps } from "./steps";
+import { FileUser, PenLineIcon } from "lucide-react";
+import { Spinner } from "@/components/Spinner";
 
 interface FooterProps {
+  isSaving: boolean;
   currentStep: string;
   setCurrentStep: (step: string) => void;
+  showSmResumePreview: boolean;
+  setShowSmResumePreview: (show: boolean) => void;
 }
 
-export default function Footer({ currentStep, setCurrentStep }: FooterProps) {
+export default function Footer({
+  currentStep,
+  setCurrentStep,
+  setShowSmResumePreview,
+  showSmResumePreview,
+  isSaving,
+}: FooterProps) {
   const previousStep = steps.find(
     (_, index) => steps[index + 1]?.key === currentStep,
   )?.key;
@@ -36,12 +47,24 @@ export default function Footer({ currentStep, setCurrentStep }: FooterProps) {
             Next step
           </Button>
         </div>
-        <Button variant="outline" size="icon" className="md:hidden"></Button>
+
+        <Button
+          variant="outline"
+          size="icon"
+          className="md:hidden"
+          onClick={() => setShowSmResumePreview(!showSmResumePreview)}
+          title={
+            showSmResumePreview ? "Hide resume preview" : "Show resume preview"
+          }
+        >
+          {showSmResumePreview ? <PenLineIcon /> : <FileUser />}
+        </Button>
         <div className="flex items-center gap-3">
           <Button variant="secondary" asChild>
             <Link href="/resumes">Close</Link>
           </Button>
-          <p className="text-muted-foreground opacity-0">Saving...</p>
+          <p className="text-muted-foreground opacity-0"></p>
+          {isSaving && <Spinner className="text-primary" />}
         </div>
       </div>
     </footer>
