@@ -20,7 +20,7 @@ export const env = createEnv({
     POSTGRES_PRISMA_URL: z.string().min(1),
     CLERK_SECRET_KEY: z.string().min(1),
     BLOB_READ_WRITE_TOKEN: z.string().min(1),
-    OPENAI_API_KEYY: z.string().min(1),
+    OPENAI_API_KEY: z.string().min(1),
     STRIPE_SECRET_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
   },
