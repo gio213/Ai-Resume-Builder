@@ -59,12 +59,14 @@ export default function Footer({
         >
           {showSmResumePreview ? <PenLineIcon /> : <FileUser />}
         </Button>
-        <div className="flex items-center gap-3">
-          <Button variant="secondary" asChild>
-            <Link href="/resumes">Close</Link>
+        <div className="flex items-center justify-center gap-3">
+          <Button variant="secondary">
+            {isSaving ? (
+              <Spinner className="text-primary" />
+            ) : (
+              <Link href="/resumes">Close</Link>
+            )}
           </Button>
-          <p className="text-muted-foreground opacity-0"></p>
-          {isSaving && <Spinner className="text-primary" />}
         </div>
       </div>
     </footer>

@@ -28,7 +28,6 @@ const page = async ({ searchParams }: PageProps) => {
       })
     : null;
 
-  console.log("resumeToedit", resumeToedit);
   return <ResumeEditor resumeToedit={resumeToedit!} />;
 };
 

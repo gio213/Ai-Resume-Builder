@@ -14,6 +14,12 @@ const nextConfig: NextConfig = {
         hostname: "tokxv8ehtdjc1lpj.public.blob.vercel-storage.com",
       },
     ],
+    localPatterns: [
+      {
+        pathname: "/assets/**",
+        search: "",
+      },
+    ],
   },
 };
 

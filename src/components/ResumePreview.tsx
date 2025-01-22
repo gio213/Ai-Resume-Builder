@@ -9,7 +9,7 @@ import { Badge } from "./ui/badge";
 interface ResumePreviewProps {
   resumeData: ResumeValues;
   className?: string;
-  contentRef?: React.RefObject<HTMLDivElement>;
+  contentRef?: React.Ref<HTMLDivElement>;
 }
 
 const ResumePreview = ({
@@ -22,19 +22,21 @@ const ResumePreview = ({
   const { width } = useDimensions(
     containerRef as React.RefObject<HTMLDivElement>,
   );
-
   return (
     <div
-      ref={containerRef}
       className={cn(
-        "text-text-primary aspect-[210/297] h-fit w-full bg-background",
+        "aspect-[210/297] h-fit w-full bg-white text-black",
         className,
       )}
+      ref={containerRef}
     >
       <div
-        ref={contentRef}
-        style={{ zoom: (1 / 794) * width }}
         className={cn("space-y-6 p-6", !width && "invisible")}
+        style={{
+          zoom: (1 / 794) * width,
+        }}
+        ref={contentRef}
+        id="resumePreviewContent"
       >
         <PersonalInfoHeader resumeData={resumeData} />
         <SummarySection resumeData={resumeData} />
@@ -141,24 +143,34 @@ const WorkExperienceSection = ({ resumeData }: ResumeSectionProps) => {
 
   return (
     <>
-      <hr style={{ borderColor: colorHex }} className="border-2" />
+      <hr
+        className="border-2"
+        style={{
+          borderColor: colorHex,
+        }}
+      />
       <div className="space-y-3">
-        <p style={{ color: colorHex }} className="text-lg font-semibold">
-          Work experiences
+        <p
+          className="text-lg font-semibold"
+          style={{
+            color: colorHex,
+          }}
+        >
+          Work experience
         </p>
         {workExperiences?.map((exp, index) => (
           <div key={index} className="break-inside-avoid space-y-1">
             <div
-              style={{ color: colorHex }}
               className="flex items-center justify-between text-sm font-semibold"
+              style={{
+                color: colorHex,
+              }}
             >
               <span>{exp.position}</span>
               {exp.startDate && (
                 <span>
-                  {formatDate(exp.startDate, "MMM yyyy")} -
-                  {exp.endDate
-                    ? formatDate(exp.endDate, "MMM yyyy")
-                    : "Present"}
+                  {formatDate(exp.startDate, "MM/yyyy")} -{" "}
+                  {exp.endDate ? formatDate(exp.endDate, "MM/yyyy") : "Present"}
                 </span>
               )}
             </div>

@@ -7,7 +7,6 @@ import { del, put } from "@vercel/blob";
 
 export const saveResume = async (values: ResumeValues) => {
   const { id } = values;
-  console.log("values fro server action", values);
   const { photo, workExperiences, educations, ...resumeValues } =
     resumeSchema.parse(values);
 
