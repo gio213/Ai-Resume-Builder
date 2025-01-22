@@ -1,6 +1,8 @@
 "use server";
 
 import openAi from "@/lib/openAi";
+import { canUseAiTools } from "@/lib/permissions";
+import { getUserSubscriptionLevel } from "@/lib/subscriptions";
 import {
   GenerateSUmmaryInput,
   generateSummarySchema,
@@ -8,9 +10,20 @@ import {
   generateWorkExperienceSchema,
   WorkExperience,
 } from "@/lib/validation";
+import { auth } from "@clerk/nextjs/server";
 
 export const generateSummary = async (input: GenerateSUmmaryInput) => {
-  // todo : Block for non premium users
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const subscriptionLevel = await getUserSubscriptionLevel(userId);
+
+  if (!canUseAiTools(subscriptionLevel)) {
+    throw new Error("You need a premium subscription to use AI tools");
+  }
 
   const { jobTitle, workExperiences, educations, skills } =
     generateSummarySchema.parse(input);
@@ -66,7 +79,17 @@ export const generateSummary = async (input: GenerateSUmmaryInput) => {
 export const generateWorkExperience = async (
   input: GenerateWorkExmpereienceInput,
 ) => {
-  // todo : Block for non premium users
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error("User not authenticated");
+  }
+
+  const subscriptionLevel = await getUserSubscriptionLevel(userId);
+
+  if (!canUseAiTools(subscriptionLevel)) {
+    throw new Error("You need a premium subscription to use AI tools");
+  }
 
   const { description } = generateWorkExperienceSchema.parse(input);
 

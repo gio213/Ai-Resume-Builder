@@ -1,6 +1,8 @@
 "use server";
 
+import { canCreateResume, canUseCustomizations } from "@/lib/permissions";
 import prisma from "@/lib/prisma";
+import { getUserSubscriptionLevel } from "@/lib/subscriptions";
 import { resumeSchema, ResumeValues } from "@/lib/validation";
 import { auth } from "@clerk/nextjs/server";
 import { del, put } from "@vercel/blob";
@@ -16,7 +18,16 @@ export const saveResume = async (values: ResumeValues) => {
     throw new Error("User not authenticated");
   }
 
-  //TODO: check resume count for non-premium users
+  const subscriptionLeve = await getUserSubscriptionLevel(userId);
+
+  if (!id) {
+    const resumeCount = await prisma.resume.count({ where: { userId } });
+    if (!canCreateResume(subscriptionLeve, resumeCount)) {
+      throw new Error(
+        "You have reached the maximum number of resumes allowed for your subscription level",
+      );
+    }
+  }
 
   const existingResume = id
     ? await prisma.resume.findUnique({ where: { id, userId } })
@@ -24,6 +35,16 @@ export const saveResume = async (values: ResumeValues) => {
 
   if (id && !existingResume) {
     throw new Error("Resume not found");
+  }
+
+  const hasCustomizations =
+    (resumeValues.borderStyle &&
+      resumeValues.borderStyle !== existingResume?.borderStyle) ||
+    (resumeValues.colorHex &&
+      resumeValues.colorHex !== existingResume?.colorHex);
+
+  if (hasCustomizations && !canUseCustomizations(subscriptionLeve)) {
+    throw new Error("You need a Pro Plus subscription to use customizations");
   }
 
   let newPhotoUrl: string | undefined | null = undefined;

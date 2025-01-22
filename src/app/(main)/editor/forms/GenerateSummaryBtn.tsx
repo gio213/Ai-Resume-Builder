@@ -4,6 +4,9 @@ import { ResumeValues } from "@/lib/validation";
 import { WandSparklesIcon } from "lucide-react";
 import React, { useState } from "react";
 import { generateSummary } from "./actions";
+import { useSubsciptionLevel } from "../../SubscriptionLevelProvider";
+import usePremiumModal from "@/hooks/usePremiumModal";
+import { canUseCustomizations } from "@/lib/permissions";
 
 interface GenerateSummaryBtnProps {
   resumeData: ResumeValues;
@@ -14,12 +17,17 @@ const GenerateSummaryBtn = ({
   onSumarryGenerated,
   resumeData,
 }: GenerateSummaryBtnProps) => {
+  const subscriptionLevel = useSubsciptionLevel();
+  const premiumModal = usePremiumModal();
   const { toast } = useToast();
 
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
-    // todo : block for non premium users
+    if (!canUseCustomizations(subscriptionLevel)) {
+      premiumModal.setOpen(true);
+      return;
+    }
 
     try {
       setLoading(true);
