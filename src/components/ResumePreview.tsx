@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { formatDate } from "date-fns";
 import { Badge } from "./ui/badge";
+import { useTranslations } from "next-intl";
 
 interface ResumePreviewProps {
   resumeData: ResumeValues;
@@ -116,6 +117,8 @@ const PersonalInfoHeader = ({ resumeData }: ResumeSectionProps) => {
 };
 
 const SummarySection = ({ resumeData }: ResumeSectionProps) => {
+  const t = useTranslations("ResumePreview");
+
   if (!resumeData) return null;
   const { summary, colorHex } = resumeData;
   return (
@@ -123,7 +126,7 @@ const SummarySection = ({ resumeData }: ResumeSectionProps) => {
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="breka-in break-inside-avoid space-y-3">
         <p style={{ color: colorHex }} className="text-lg font-semibold">
-          Professional profile
+          {t("Professional profile")}
         </p>
         <div className="whitespace-pre-line text-sm">{summary}</div>
       </div>
@@ -132,6 +135,7 @@ const SummarySection = ({ resumeData }: ResumeSectionProps) => {
 };
 
 const WorkExperienceSection = ({ resumeData }: ResumeSectionProps) => {
+  const t = useTranslations("ResumePreview");
   if (!resumeData) return null;
   const { workExperiences, colorHex } = resumeData;
 
@@ -156,7 +160,7 @@ const WorkExperienceSection = ({ resumeData }: ResumeSectionProps) => {
             color: colorHex,
           }}
         >
-          Work experience
+          {t("Work experience")}
         </p>
         {workExperiences?.map((exp, index) => (
           <div key={index} className="break-inside-avoid space-y-1">
@@ -170,7 +174,9 @@ const WorkExperienceSection = ({ resumeData }: ResumeSectionProps) => {
               {exp.startDate && (
                 <span>
                   {formatDate(exp.startDate, "MM/yyyy")} -{" "}
-                  {exp.endDate ? formatDate(exp.endDate, "MM/yyyy") : "Present"}
+                  {exp.endDate
+                    ? formatDate(exp.endDate, "MM/yyyy")
+                    : t("Present")}
                 </span>
               )}
             </div>
@@ -184,6 +190,7 @@ const WorkExperienceSection = ({ resumeData }: ResumeSectionProps) => {
 };
 
 const EducationSection = ({ resumeData }: ResumeSectionProps) => {
+  const t = useTranslations("ResumePreview");
   if (!resumeData) return null;
 
   const { educations, colorHex } = resumeData;
@@ -198,7 +205,7 @@ const EducationSection = ({ resumeData }: ResumeSectionProps) => {
     <>
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="space-y-3">
-        <p className="text-lg font-semibold">Education</p>
+        <p className="text-lg font-semibold">{t("Education")}</p>
         {educations?.map((edu, index) => (
           <div key={index} className="break-inside-avoid space-y-1">
             <div
@@ -209,7 +216,11 @@ const EducationSection = ({ resumeData }: ResumeSectionProps) => {
               {edu.startDate && (
                 <span>
                   {edu.startDate &&
-                    `${formatDate(edu.startDate, "MMM yyyy")} ${edu.endDate ? `- ${formatDate(edu.endDate, "MMM yyyy")}` : ""}`}
+                    ` ${formatDate(edu.startDate, "MM/yyyy")} ${
+                      edu.endDate
+                        ? `- ${formatDate(edu.endDate, "MM/yyyy")}`
+                        : `- ${t("Present")}`
+                    }`}
                 </span>
               )}
             </div>
@@ -222,6 +233,7 @@ const EducationSection = ({ resumeData }: ResumeSectionProps) => {
 };
 
 const SkillsSection = ({ resumeData }: ResumeSectionProps) => {
+  const t = useTranslations("ResumePreview");
   if (!resumeData) return null;
   const { skills, colorHex, borderStyle } = resumeData;
 
@@ -239,7 +251,7 @@ const SkillsSection = ({ resumeData }: ResumeSectionProps) => {
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="break-inside-avoid space-y-3">
         <p style={{ color: colorHex }} className="text-lg font-semibold">
-          Skills
+          {t("Skills")}
         </p>
         <div className="flex break-inside-avoid flex-wrap gap-2">
           {skills.map((skill, index) => (

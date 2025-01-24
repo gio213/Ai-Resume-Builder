@@ -13,7 +13,9 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import GenerateSummaryBtn from "./GenerateSummaryBtn";
+import { useTranslations } from "next-intl";
 const SummaryForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
+  const t = useTranslations("SummaryForm");
   const form = useForm<SummaryValues>({
     resolver: zodResolver(summarySchema),
     defaultValues: {
@@ -33,10 +35,11 @@ const SummaryForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-y-1.5 text-center">
-        <h2 className="text-2xl font-semibold">Professional summary</h2>
+        <h2 className="text-2xl font-semibold">{t("Professional summary")}</h2>
         <p className="text-sm text-muted-foreground">
-          Write a short introduction about your resume or let the AI generate
-          one from your entry data
+          {t(
+            "Write a short introduction about your resume or let the AI generate one from your entry data",
+          )}
         </p>
       </div>
       <Form {...form}>
@@ -46,11 +49,13 @@ const SummaryForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
             name="summary"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="sr-only">Professional Summary</FormLabel>
+                <FormLabel className="sr-only">
+                  {t("Professional summary")}
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     {...field}
-                    placeholder="A brief, engaging text about yourself"
+                    placeholder={t("A brief, engaging text about yourself")}
                   />
                 </FormControl>
                 <FormMessage />

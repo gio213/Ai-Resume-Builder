@@ -7,6 +7,7 @@ import { generateSummary } from "./actions";
 import { useSubsciptionLevel } from "../../SubscriptionLevelProvider";
 import usePremiumModal from "@/hooks/usePremiumModal";
 import { canUseCustomizations } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 interface GenerateSummaryBtnProps {
   resumeData: ResumeValues;
@@ -20,7 +21,7 @@ const GenerateSummaryBtn = ({
   const subscriptionLevel = useSubsciptionLevel();
   const premiumModal = usePremiumModal();
   const { toast } = useToast();
-
+  const t = useTranslations("SummaryForm");
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
@@ -52,7 +53,7 @@ const GenerateSummaryBtn = ({
       loading={loading}
     >
       <WandSparklesIcon className="size-4" />
-      Generate (AI)
+      {t("Generate (AI)")}
     </LoadingButton>
   );
 };

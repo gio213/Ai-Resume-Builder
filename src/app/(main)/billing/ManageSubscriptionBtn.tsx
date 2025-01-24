@@ -3,11 +3,12 @@ import LoadingButton from "@/components/LoadingButton";
 import { useToast } from "@/hooks/use-toast";
 import React, { useState } from "react";
 import { createCustumerPortalSession } from "./actions";
+import { useTranslations } from "next-intl";
 
 const ManageSubscriptionBtn = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-
+  const t = useTranslations("Billing");
   const handleClick = async () => {
     try {
       setLoading(true);
@@ -26,7 +27,7 @@ const ManageSubscriptionBtn = () => {
 
   return (
     <LoadingButton onClick={handleClick} loading={loading}>
-      Manage Subscription
+      {t("Manage Subscription")}
     </LoadingButton>
   );
 };

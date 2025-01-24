@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import usePremiumModal from "@/hooks/usePremiumModal";
 import { PlusSquare } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import React from "react";
 
@@ -11,13 +12,14 @@ interface CreateResumeBtnProps {
 
 const CreateResumeBtn = ({ canCreate }: CreateResumeBtnProps) => {
   const premiumModal = usePremiumModal();
+  const t = useTranslations("CreateResumeBtn");
 
   if (canCreate) {
     return (
       <Button asChild className="mx-auto flex w-fit gap-2">
         <Link href={"/editor"}>
           <PlusSquare className="size-5" />
-          New resume
+          {t("New resume")}
         </Link>
       </Button>
     );
@@ -28,7 +30,7 @@ const CreateResumeBtn = ({ canCreate }: CreateResumeBtnProps) => {
       className="mx-auto flex w-fit gap-2"
     >
       <PlusSquare className="size-5" />
-      New resume
+      {t("New resume")}
     </Button>
   );
 };

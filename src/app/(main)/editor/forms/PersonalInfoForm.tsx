@@ -11,6 +11,7 @@ import { Input } from "@/components/ui/input";
 import { EdiotrFormProps } from "@/lib/types";
 import { personalInfoSchema, PersonalInfoValues } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
@@ -18,6 +19,8 @@ export default function PersonalInfoForm({
   resumeData,
   setResumeData,
 }: EdiotrFormProps) {
+  const t = useTranslations("PersonalInfoForm");
+
   const form = useForm<PersonalInfoValues>({
     resolver: zodResolver(personalInfoSchema),
     defaultValues: {
@@ -45,8 +48,10 @@ export default function PersonalInfoForm({
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-y-1.5 text-center">
-        <h2 className="text-2xl font-semibold">Personal info</h2>
-        <p className="text-sm text-muted-foreground">Tell us about yourself.</p>
+        <h2 className="text-2xl font-semibold">{t("Personal info")}</h2>
+        <p className="text-sm text-muted-foreground">
+          {t("Tell us about yourself")}
+        </p>
       </div>
       <Form {...form}>
         <form className="space-y-3">
@@ -55,10 +60,11 @@ export default function PersonalInfoForm({
             name="photo"
             render={({ field: { value, ...fieldValues } }) => (
               <FormItem>
-                <FormLabel>Your photo</FormLabel>
+                <FormLabel>{t("Your photo")}</FormLabel>
                 <div className="flex items-center gap-2">
                   <FormControl>
                     <Input
+                      draggable
                       {...fieldValues}
                       type="file"
                       accept="image/*"
@@ -79,7 +85,7 @@ export default function PersonalInfoForm({
                       }
                     }}
                   >
-                    Remove
+                    {t("Remove")}
                   </Button>
                 </div>
                 <FormMessage />
@@ -92,7 +98,7 @@ export default function PersonalInfoForm({
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>First name</FormLabel>
+                  <FormLabel>{t("First name")}</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -105,7 +111,7 @@ export default function PersonalInfoForm({
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Last name</FormLabel>
+                  <FormLabel>{t("Last name")}</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -119,7 +125,7 @@ export default function PersonalInfoForm({
             name="jobTitle"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Job title</FormLabel>
+                <FormLabel>{t("Job title")}</FormLabel>
                 <FormControl>
                   <Input {...field} />
                 </FormControl>
@@ -133,7 +139,7 @@ export default function PersonalInfoForm({
               name="city"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>City</FormLabel>
+                  <FormLabel>{t("City")}</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -146,7 +152,7 @@ export default function PersonalInfoForm({
               name="country"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Country</FormLabel>
+                  <FormLabel>{t("Country")}</FormLabel>
                   <FormControl>
                     <Input {...field} />
                   </FormControl>
@@ -160,7 +166,7 @@ export default function PersonalInfoForm({
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Phone</FormLabel>
+                <FormLabel>{t("Phone")}</FormLabel>
                 <FormControl>
                   <Input {...field} type="tel" />
                 </FormControl>
@@ -173,7 +179,7 @@ export default function PersonalInfoForm({
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{t("Email")}</FormLabel>
                 <FormControl>
                   <Input {...field} type="email" />
                 </FormControl>

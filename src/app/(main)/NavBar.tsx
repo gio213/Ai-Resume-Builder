@@ -8,13 +8,14 @@ import { CreditCard } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
+import LanguageSwitcher from "@/components/LangugageSwitcher";
 
 const NavBar = () => {
   const { theme } = useTheme();
 
   return (
-    <header className="shadow-sm ">
-      <div className="max-w-7xl mx-auto p-3 flex items-center justify-between gap-3">
+    <header className="shadow-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 p-3">
         <Link href={"/resumes"} className="flex items-center gap-2">
           <Image
             src={logo}
@@ -27,8 +28,9 @@ const NavBar = () => {
             AI Resume Builder
           </span>
         </Link>
-        <div className="flex items-center gap-3 just">
+        <div className="just flex items-center gap-3">
           <ThemeToggle />
+          <LanguageSwitcher />
           <UserButton
             appearance={{
               elements: {

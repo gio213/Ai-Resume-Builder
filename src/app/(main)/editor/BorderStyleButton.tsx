@@ -4,6 +4,7 @@ import React from "react";
 import { useSubsciptionLevel } from "../SubscriptionLevelProvider";
 import usePremiumModal from "@/hooks/usePremiumModal";
 import { canUseCustomizations } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 export const BorderStyles = {
   SQUARE: "square",
@@ -24,6 +25,7 @@ const BorderStyleButton = ({
 }: BorderStyleButtonProps) => {
   const subscriptionLevel = useSubsciptionLevel();
   const premiumModal = usePremiumModal();
+  const t = useTranslations("ResumeEditor");
 
   const handleClick = () => {
     if (!canUseCustomizations(subscriptionLevel)) {
@@ -45,7 +47,7 @@ const BorderStyleButton = ({
 
   return (
     <Button
-      title="Change border style"
+      title={t("Change border style")}
       size={"icon"}
       variant={"outline"}
       onClick={handleClick}

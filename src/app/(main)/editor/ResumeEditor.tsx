@@ -10,6 +10,7 @@ import { cn, mapToResumeValues } from "@/lib/utils";
 import { useAutoSaveResume } from "./useAutoSaveResume";
 import { useUndloadWarning } from "@/hooks/useUnloadWarning";
 import { ResumeServerData } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 interface ResumeEditorProps {
   resumeToedit: ResumeServerData;
@@ -17,6 +18,7 @@ interface ResumeEditorProps {
 
 const ResumeEditor = ({ resumeToedit }: ResumeEditorProps) => {
   const searchParams = useSearchParams();
+  const t = useTranslations("ResumeEditor");
 
   const [resumeData, setResumeData] = useState<ResumeValues>(
     resumeToedit ? mapToResumeValues(resumeToedit) : {},
@@ -42,10 +44,11 @@ const ResumeEditor = ({ resumeToedit }: ResumeEditorProps) => {
   return (
     <div className="flex grow flex-col">
       <header className="space-y-1.5 border-b px-3 py-5 text-center">
-        <h1 className="text-2xl font-bold">Design your resume</h1>
+        <h1 className="text-2xl font-bold">{t("Design your resume")}</h1>
         <p className="text-sm text-muted-foreground">
-          Follow below to create your resume. Yoyr progress will be saved
-          automatically.
+          {t(
+            "Follow below to create your resume Your progress will be saved automatically",
+          )}
         </p>
       </header>
       <main className="relative grow">

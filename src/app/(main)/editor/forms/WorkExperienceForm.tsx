@@ -34,8 +34,10 @@ import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
 import GenerateExperienceButton from "./GenerateExperienceButton";
+import { useTranslations } from "next-intl";
 
 const WorkExperienceForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
+  const t = useTranslations("WorkExperienceForm");
   const form = useForm<WorkExperiencesValues>({
     resolver: zodResolver(workExperienceSchema),
     defaultValues: {
@@ -84,9 +86,9 @@ const WorkExperienceForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-x-1.5 text-center">
-        <h2 className="text-2xl font-semibold">Work experience</h2>
+        <h2 className="text-2xl font-semibold">{t("Work experience")}</h2>
         <p className="text-sm text-muted-foreground">
-          Add as many work experiences as you like
+          {t("Add as many work experiences as you like")}
         </p>
       </div>
       <Form {...form}>
@@ -126,7 +128,7 @@ const WorkExperienceForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
                 })
               }
             >
-              Add work experience
+              {t("Add work experience")}
             </Button>
           </div>
         </form>
@@ -159,6 +161,8 @@ const WorkExperienceItems = ({
     isDragging,
   } = useSortable({ id });
 
+  const t = useTranslations("WorkExperienceForm");
+
   return (
     <div
       style={{ transform: CSS.Transform.toString(transform), transition }}
@@ -169,7 +173,9 @@ const WorkExperienceItems = ({
       )}
     >
       <div className="flex justify-between gap-2">
-        <span className="font-semibold">Work experience {index + 1} </span>
+        <span className="font-semibold">
+          {t("Work experience")} {index + 1}{" "}
+        </span>
         <GripHorizontal
           {...attributes}
           {...listeners}
@@ -188,7 +194,7 @@ const WorkExperienceItems = ({
         name={`workExperiences.${index}.position`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Job title</FormLabel>
+            <FormLabel>{t("Job title")}</FormLabel>
             <Input {...field} autoFocus />
           </FormItem>
         )}
@@ -198,7 +204,7 @@ const WorkExperienceItems = ({
         name={`workExperiences.${index}.company`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Company</FormLabel>
+            <FormLabel>{t("Company")}</FormLabel>
             <Input {...field} />
           </FormItem>
         )}
@@ -209,7 +215,7 @@ const WorkExperienceItems = ({
           name={`workExperiences.${index}.startDate`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Start date</FormLabel>
+              <FormLabel>{t("Start date")}</FormLabel>
               <Input {...field} type="date" value={field.value?.slice(0, 10)} />
             </FormItem>
           )}
@@ -219,14 +225,14 @@ const WorkExperienceItems = ({
           name={`workExperiences.${index}.endDate`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>End date</FormLabel>
+              <FormLabel>{t("End date")}</FormLabel>
               <Input {...field} type="date" value={field.value?.slice(0, 10)} />
             </FormItem>
           )}
         />
         <FormDescription>
-          Leave <span className="font-semibold">end date </span>
-          if you are currently working here
+          {t("Leave")} <span className="font-semibold"> {t("End date")} </span>
+          {t("empty if you currently work here")}
         </FormDescription>
       </div>
       <FormField
@@ -234,7 +240,7 @@ const WorkExperienceItems = ({
         name={`workExperiences.${index}.description`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Description</FormLabel>
+            <FormLabel>{t("Description")}</FormLabel>
             <Textarea {...field} />
           </FormItem>
         )}
@@ -244,7 +250,7 @@ const WorkExperienceItems = ({
         type="button"
         onClick={() => remove(index)}
       >
-        Remove
+        {t("Remove work experience")}
       </Button>
     </div>
   );

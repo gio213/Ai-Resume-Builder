@@ -30,6 +30,7 @@ import LoadingButton from "@/components/LoadingButton";
 import { useSubsciptionLevel } from "../../SubscriptionLevelProvider";
 import usePremiumModal from "@/hooks/usePremiumModal";
 import { canUseCustomizations } from "@/lib/permissions";
+import { useTranslations } from "next-intl";
 
 interface GenerateExperienceButtonProps {
   onWorkExperienceGenerated: (workExperience: WorkExperience) => void;
@@ -41,6 +42,7 @@ const GenerateExperienceButton = ({
   const [showInputDialog, setShowInputDialog] = useState(false);
   const subscriptionLevel = useSubsciptionLevel();
   const premiumModal = usePremiumModal();
+  const t = useTranslations("GenerateExperienceButton");
   return (
     <>
       <Button
@@ -55,7 +57,7 @@ const GenerateExperienceButton = ({
         }}
       >
         <WandSparklesIcon className="size-4" />
-        Smart fill (AI)
+        {t("Smart fill (AI)")}
       </Button>
       <InputDialog
         open={showInputDialog}
@@ -83,6 +85,7 @@ const InputDialog = ({
   open,
 }: InputDialogProps) => {
   const { toast } = useToast();
+  const t = useTranslations("GenerateExperienceButton");
 
   const form = useForm<GenerateWorkExmpereienceInput>({
     resolver: zodResolver(generateWorkExperienceSchema),
@@ -108,10 +111,11 @@ const InputDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Generate work experience</DialogTitle>
+          <DialogTitle>{t("Generate work experience")}</DialogTitle>
           <DialogDescription>
-            Describe this work experience and the AI will generate an optimized
-            entry for you.
+            {t(
+              "Describe this work experience and the AI will generate an optimized entry for you",
+            )}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -121,11 +125,13 @@ const InputDialog = ({
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description</FormLabel>
+                  <FormLabel>{t("Description")}</FormLabel>
                   <FormControl>
                     <Textarea
                       {...field}
-                      placeholder={`E.g. "from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were: ..."`}
+                      placeholder={t(
+                        "from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were",
+                      )}
                       autoFocus
                     />
                   </FormControl>
@@ -134,7 +140,7 @@ const InputDialog = ({
               )}
             />
             <LoadingButton type="submit" loading={form.formState.isSubmitting}>
-              Generate
+              {t("Generate work experience")}
             </LoadingButton>
           </form>
         </Form>

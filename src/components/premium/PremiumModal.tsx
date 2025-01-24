@@ -7,11 +7,13 @@ import usePremiumModal from "@/hooks/usePremiumModal";
 import { useToast } from "@/hooks/use-toast";
 import { createCheckoutSession } from "./actions";
 import { env } from "@/env";
+import { useTranslations } from "next-intl";
 const premiumFeatures = ["AI tools", "Up to 3 resumes"];
 const premiumPlusFeaturs = ["Infinite resumes", "Design customization"];
 
 const PremiumModal = () => {
   const { open, setOpen } = usePremiumModal();
+  const t = useTranslations("Billing");
 
   const { toast } = useToast();
 
@@ -44,18 +46,18 @@ const PremiumModal = () => {
     >
       <DialogContent className="max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Resume Builder AI Premium</DialogTitle>
+          <DialogTitle>{t("Resume Builder AI Premium")}</DialogTitle>
         </DialogHeader>
         <div className="space-y-6">
-          <p>Get a premium subscription to unlock more features.</p>
+          <p>{t("Get a premium subscription to unlock more features")}</p>
           <div className="flex">
             <div className="flex w-1/2 flex-col space-y-5">
-              <h3 className="text-center text-lg font-bold">Premium</h3>
+              <h3 className="text-center text-lg font-bold">{t("Premium")}</h3>
               <ul className="list-inside space-y-2">
                 {premiumFeatures.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
                     <Check className="size-4 text-green-500" />
-                    {feature}
+                    {t(feature)}
                   </li>
                 ))}
               </ul>
@@ -66,19 +68,19 @@ const PremiumModal = () => {
                 }
                 variant={"outline"}
               >
-                Get Premium
+                {t("Get Premium")}
               </Button>
             </div>
             <div className="mx-6 border-l" />
             <div className="flex w-1/2 flex-col space-y-5">
               <h3 className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-center text-lg font-bold text-transparent">
-                Premium Plus
+                {t("Premium Plus")}
               </h3>
               <ul className="list-inside space-y-2">
                 {premiumPlusFeaturs.map((feature) => (
                   <li key={feature} className="flex items-center gap-2">
                     <Check className="size-4 text-green-500" />
-                    {feature}
+                    {t(feature)}
                   </li>
                 ))}
               </ul>
@@ -91,7 +93,7 @@ const PremiumModal = () => {
                 }
                 variant={"premium"}
               >
-                Get Premium Plus
+                {t("Get Premium Plus")}
               </Button>
             </div>
           </div>

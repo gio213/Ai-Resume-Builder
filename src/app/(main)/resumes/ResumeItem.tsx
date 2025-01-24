@@ -25,6 +25,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import LoadingButton from "@/components/LoadingButton";
+import { useTranslations } from "next-intl";
 
 interface ResumeItemProps {
   resume: ResumeServerData;
@@ -32,6 +33,7 @@ interface ResumeItemProps {
 
 const ResumeItem = ({ resume }: ResumeItemProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("ResumeItem");
 
   const reactToPrint = useReactToPrint({
     contentRef,
@@ -48,13 +50,13 @@ const ResumeItem = ({ resume }: ResumeItemProps) => {
           className="inline-block w-full text-center"
         >
           <p className="line-clamp-1 font-semibold">
-            {resume.title || "Not title"}
+            {resume.title || t("Untitled")}
           </p>
           {resume.description && (
             <p className="line-clamp-2 text-sm">{resume.description}</p>
           )}
           <p className="text-xs text-muted-foreground">
-            {wasUpdated ? "Updated" : "Created"} on{" "}
+            {wasUpdated ? `${t("Updated")}` : `${t("Created")}`} on{" "}
             {formatDate(resume.updatedAt, "MMM d, yyyy h:mm a")}
           </p>
         </Link>
@@ -84,6 +86,7 @@ interface MoreMenuProps {
 
 const MoreMenu = ({ resumeId, onPrintClick }: MoreMenuProps) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const t = useTranslations("ResumeItem");
 
   return (
     <>
@@ -105,14 +108,14 @@ const MoreMenu = ({ resumeId, onPrintClick }: MoreMenuProps) => {
             }}
           >
             <Trash2 className="size-4" />
-            Delete
+            {t("Delete")}
           </DropdownMenuItem>
           <DropdownMenuItem
             className="flex items-center gap-2"
             onClick={onPrintClick}
           >
             <Printer className="size-4" />
-            Print
+            {t("Print")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -138,6 +141,7 @@ const DeleteConfirmation = ({
 }: DeleteConfirmationProps) => {
   const { toast } = useToast();
   const [isPending, startTrasition] = useTransition();
+  const t = useTranslations("ResumeItem");
 
   const handleDelete = async () => {
     startTrasition(async () => {
@@ -160,7 +164,9 @@ const DeleteConfirmation = ({
         <DialogHeader>
           <DialogTitle>Delete resume</DialogTitle>
           <DialogDescription>
-            This will permanently delete the resume. Are you sure you want to
+            {t(
+              "This will permanently delete the resume Are you sure you want to",
+            )}
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -170,10 +176,10 @@ const DeleteConfirmation = ({
             onClick={handleDelete}
           >
             {" "}
-            Delete
+            {t("Delete")}
           </LoadingButton>
           <Button variant={"secondary"} onClick={() => onOpenChange(false)}>
-            Cancel
+           {t("Cancel")}
           </Button>
         </DialogFooter>
       </DialogContent>

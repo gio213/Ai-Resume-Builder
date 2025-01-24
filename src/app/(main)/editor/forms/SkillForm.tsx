@@ -13,8 +13,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslations } from "next-intl";
 
 const SkillForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
+  const t = useTranslations("SkillForm");
   const form = useForm<SkillsValues>({
     resolver: zodResolver(skillsSchema),
     defaultValues: {
@@ -41,8 +43,10 @@ const SkillForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-y-1.5 text-center">
-        <h2 className="text-2xl font-semibold">Skills</h2>
-        <p className="text-sm text-muted-foreground">What are you good at?</p>
+        <h2 className="text-2xl font-semibold">{t("Skills")}</h2>
+        <p className="text-sm text-muted-foreground">
+          {t("What are you good at?")}
+        </p>
       </div>
       <Form {...form}>
         <form className="space-y-3">
@@ -51,11 +55,13 @@ const SkillForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
             name="skills"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="sr-only">Skills</FormLabel>
+                <FormLabel className="sr-only">{t("Skills")}</FormLabel>
                 <FormControl>
                   <Textarea
                     {...field}
-                    placeholder="e.g graphic design, photoshop ..."
+                    placeholder={t(
+                      "Social Media Management, Adobe Premiere,HTML, CSS, JavaScript",
+                    )}
                     onChange={(e) => {
                       const skills = e.target.value.split(",");
                       field.onChange(skills);
@@ -63,7 +69,7 @@ const SkillForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
                   />
                 </FormControl>
                 <FormDescription>
-                  Separate each skill with a comma
+                  {t("Separate each skill with a comma")}
                 </FormDescription>
                 <FormMessage />
               </FormItem>

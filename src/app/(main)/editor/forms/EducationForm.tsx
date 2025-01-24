@@ -26,8 +26,10 @@ import {
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
 
 const EducationForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
+  const t = useTranslations("EducationForm");
   const form = useForm<EducationValues>({
     resolver: zodResolver(educationSchema),
     defaultValues: {
@@ -74,9 +76,9 @@ const EducationForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-x-1.5 text-center">
-        <h2 className="text-2xl font-semibold">Education</h2>
+        <h2 className="text-2xl font-semibold">{t("Education")}</h2>
         <p className="text-sm text-muted-foreground">
-          Add as many educations as you like
+          {t("Add your education")}
         </p>
       </div>
       <Form {...form}>
@@ -114,7 +116,7 @@ const EducationForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
                 })
               }
             >
-              Add education
+              {t("Add education")}
             </Button>
           </div>
         </form>
@@ -133,6 +135,7 @@ interface EducationItemProps {
 }
 
 const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
+  const t = useTranslations("EducationForm");
   const {
     attributes,
     listeners,
@@ -151,7 +154,9 @@ const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
       )}
     >
       <div className="flex justify-between gap-2">
-        <span className="font-semibold">Education {index + 1} </span>
+        <span className="font-semibold">
+          {t("Education")} {index + 1}{" "}
+        </span>
         <GripHorizontal
           {...attributes}
           {...listeners}
@@ -163,7 +168,7 @@ const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
         name={`educations.${index}.degree`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Degree</FormLabel>
+            <FormLabel>{t("Degree")}</FormLabel>
             <Input {...field} autoFocus />
           </FormItem>
         )}
@@ -173,7 +178,7 @@ const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
         name={`educations.${index}.shcool`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Shcool</FormLabel>
+            <FormLabel>{t("Name of the shcool or university")}</FormLabel>
             <Input {...field} />
           </FormItem>
         )}
@@ -184,7 +189,7 @@ const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
           name={`educations.${index}.startDate`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Start date</FormLabel>
+              <FormLabel>{t("Start date")}</FormLabel>
               <Input {...field} type="date" value={field.value?.slice(0, 10)} />
             </FormItem>
           )}
@@ -194,7 +199,7 @@ const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
           name={`educations.${index}.endDate`}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>End date</FormLabel>
+              <FormLabel>{t("End date")}</FormLabel>
               <Input {...field} type="date" value={field.value?.slice(0, 10)} />
             </FormItem>
           )}
@@ -205,7 +210,7 @@ const EducationItem = ({ form, index, remove, id }: EducationItemProps) => {
         type="button"
         onClick={() => remove(index)}
       >
-        Remove
+        {t("Remove")}
       </Button>
     </div>
   );

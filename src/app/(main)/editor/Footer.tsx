@@ -3,6 +3,7 @@ import Link from "next/link";
 import { steps } from "./steps";
 import { FileUser, PenLineIcon } from "lucide-react";
 import { Spinner } from "@/components/Spinner";
+import { useTranslations } from "next-intl";
 
 interface FooterProps {
   isSaving: boolean;
@@ -27,6 +28,8 @@ export default function Footer({
     (_, index) => steps[index - 1]?.key === currentStep,
   )?.key;
 
+  const t = useTranslations("Footer");
+
   return (
     <footer className="w-full border-t px-3 py-5">
       <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-3">
@@ -38,13 +41,13 @@ export default function Footer({
             }
             disabled={!previousStep}
           >
-            Previous step
+            {t("Previous step")}
           </Button>
           <Button
             onClick={nextStep ? () => setCurrentStep(nextStep) : undefined}
             disabled={!nextStep}
           >
-            Next step
+            {t("Next step")}
           </Button>
         </div>
 
@@ -64,7 +67,7 @@ export default function Footer({
             {isSaving ? (
               <Spinner className="text-primary" />
             ) : (
-              <Link href="/resumes">Close</Link>
+              <Link href="/resumes">{t("Close")}</Link>
             )}
           </Button>
         </div>

@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import React from "react";
 import { steps } from "./steps";
+import { useTranslations } from "next-intl";
 
 interface BreadCrumbsProps {
   currentStep: string;
@@ -15,6 +16,7 @@ interface BreadCrumbsProps {
 }
 
 const BreadCrumbs = ({ currentStep, setCurrentStep }: BreadCrumbsProps) => {
+  const t = useTranslations("BreadCrumbs");
   return (
     <div className="flex justify-center">
       <Breadcrumb>
@@ -23,11 +25,11 @@ const BreadCrumbs = ({ currentStep, setCurrentStep }: BreadCrumbsProps) => {
             <React.Fragment key={step.key}>
               <BreadcrumbItem>
                 {step.key === currentStep ? (
-                  <BreadcrumbPage>{step.title}</BreadcrumbPage>
+                  <BreadcrumbPage> {t(step.title)}</BreadcrumbPage>
                 ) : (
                   <BreadcrumbLink asChild>
                     <button onClick={() => setCurrentStep(step.key)}>
-                      {step.title}
+                      {t(step.title)}
                     </button>
                   </BreadcrumbLink>
                 )}

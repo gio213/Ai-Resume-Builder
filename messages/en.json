@@ -1,0 +1,153 @@
+{
+  "Home": {
+    "Create the": "Create the",
+    " Perfect Resume": "Perfect Resume",
+    "in minutes": "in minutes",
+    "Our": "Our",
+    "AI resume builder": "AI resume builder",
+    "helps you": "helps you",
+    "design a professional resume, even if you": "design a professional resume, even if you",
+    "Professional resumes, made easy!": "Professional resumes, made easy!",
+    "Get started": "Get started"
+  },
+  "Resumes": {
+    "Your resumes": "Your resumes",
+    "Total": "Total"
+  },
+  "CreateResumeBtn": {
+    "New resume": "New resume"
+  },
+  "ResumeItem": {
+    "Untitled": "Untitled",
+    "Updated": "Updated",
+    "Created": "Created",
+    "Delete": "Delete",
+    "Cancel": "Cancel",
+    "Print": "Print",
+    "Delete resume": "Delete resume",
+    "This will permanently delete the resume Are you sure you want to": "This will permanently delete the resume. Are you sure you want to"
+  },
+  "ResumeEditor": {
+    "Design your resume": "Design your resume",
+    "Follow below to create your resume Your progress will be saved automatically": "Follow below to create your resume Your progress will be saved automatically",
+    "Updated": "Updated",
+    "Created": "Created",
+    "Change resume color": "Change resume color",
+    "Change border style": "Change border style"
+  },
+  "BreadCrumbs": {
+    "General info": "General info",
+    "Personal info": "Personal info",
+    "Work experience": "Work experience",
+    "Education": "Education",
+    "Skills": "Skills",
+    "Summary": "Summary"
+  },
+  "GeneralInforForm": {
+    "General info": "General info",
+    "This will not appear on your resume": "This will not appear on your resume.",
+    "Project name": "Project name",
+    "My resume": "My resume",
+    "Description": "Description",
+    "A resume for my next job": "A resume for my next job",
+    "Describe what this resume is for": "Describe what this resume is for"
+  },
+  "Footer": {
+    "Previous step": "Previous step",
+    "Next step": "Next step",
+    "Close": "Close",
+    "Terms": "Terms"
+  },
+  "PersonalInfoForm": {
+    "Personal info": "Personal info",
+    "Tell us about yourself": "Tell us about yourself",
+    "Your photo": "Your photo",
+    "Remove": "Remove",
+    "First name": "First name",
+    "Last name": "Last name",
+    "Job title": "Job title",
+    "City": "City",
+    "Country": "Country",
+    "Phone": "Phone",
+    "Email": "Email"
+  },
+  "WorkExperienceForm": {
+    "Work experience": "Work experience",
+    "Add as many work experiences as you like": "Add as many work experiences as you like",
+    "Add work experience": "Add work experience",
+    "Job title": "Job title",
+    "Company": "Company",
+    "Start date": "Start date",
+    "End date": "End date",
+    "Leave": "Leave",
+    "empty if you currently work here": "empty if you currently work here",
+    "Description": "Description",
+    "Remove work experience": "Remove work experience"
+  },
+  "GenerateExperienceButton": {
+    "Smart fill (AI)": "Smart fill (AI)",
+    "Generate work experience": "Generate work experience",
+    "Describe this work experience and the AI will generate an optimized entry for you": "Describe this work experience and the AI will generate an optimized entry for you",
+    "Description": "Description",
+    "from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were": "E.g. from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were:..."
+  },
+  "EducationForm": {
+    "Education": "Education",
+    "Add your education": "Add your education",
+    "Add education": "Add education",
+    "Degree": "Degree",
+    "Name of the shcool or university": "Name of the shcool or university",
+    "Start date": "Start date",
+    "End date": "End date",
+    "Remove": "Remove"
+  },
+  "SkillForm": {
+    "Skills": "Skills",
+    "What are you good at?": "What are you good at?",
+    "Social Media Management, Adobe Premiere,HTML, CSS, JavaScript": "e.g Social Media Management, Adobe Premiere,HTML, CSS, JavaScript...",
+    "Separate each skill with a comma": "Separate each skill with a comma"
+  },
+  "SummaryForm": {
+    "Professional summary": "Professional summary",
+    "Write a short introduction about your resume or let the AI generate one from your entry data": " Write a short introduction about your resume or let the AI generate",
+    "A brief, engaging text about yourself": "A brief, engaging text about yourself",
+    "Generate (AI)": "Generate (AI)"
+  },
+  "Billing": {
+    "Your current plan": "Your current plan",
+    "Billing": "Billing",
+    "Your subscription will be canceled on": "Your subscription will be canceled on",
+    "Manage Subscription": "Manage Subscription",
+    "Get Premium Subscription": "Get Premium Subscription",
+    "Resume Builder AI Premium": "Resume Builder AI Premium",
+    "Get a premium subscription to unlock more features": "Get a premium subscription to unlock more features",
+    "Premium": "Premium",
+    "Get Premium": "Get Premium",
+    "Premium Plus": " Premium Plus",
+    "AI tools": "AI tools",
+    "Up to 3 resumes": "Up to 3 resumes",
+    "Infinite resumes": "Infinite resumes",
+    "Design customization": "Design customization",
+    "Get Premium Plus": "Get Premium Plus"
+  },
+
+  "ResumePreview": {
+    "Professional profile": "Professional profile",
+    "Work experience": "Work experience",
+    "Education": "Education",
+    "Jan": "Jan",
+    "Feb": "Feb",
+    "Mar": "Mar",
+    "Apr": "Apr",
+    "May": "May",
+    "Jun": "Jun",
+    "Jul": "Jul",
+    "Aug": "Aug",
+    "Sep": "Sep",
+    "Oct": "Oct",
+    "Nov": "Nov",
+    "Dec": "Dec",
+    "Present": "Present",
+    "Skills": "Skills"
+  }
+}

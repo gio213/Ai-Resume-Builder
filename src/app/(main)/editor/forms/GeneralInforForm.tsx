@@ -13,8 +13,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { EdiotrFormProps } from "@/lib/types";
+import { useTranslations } from "next-intl";
 
 const GeneralInforForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
+  const t = useTranslations("GeneralInforForm");
   const form = useForm<GeneralInfoValues>({
     resolver: zodResolver(generalInfoSchema),
     defaultValues: {
@@ -35,9 +37,9 @@ const GeneralInforForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
   return (
     <div className="mx-auto max-w-xl space-y-6">
       <div className="space-y-1.5 text-center">
-        <h2 className="text-2xl font-semibold">General info</h2>
+        <h2 className="text-2xl font-semibold">{t("General info")}</h2>
         <p className="text-sm text-muted-foreground">
-          This will not appear on your resume.
+          {t("This will not appear on your resume")}
         </p>
       </div>
       <Form {...form}>
@@ -47,9 +49,9 @@ const GeneralInforForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Project name</FormLabel>
+                <FormLabel>{t("Project name")}</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="My cool resume " autoFocus />
+                  <Input {...field} placeholder={t("My resume")} autoFocus />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -60,12 +62,15 @@ const GeneralInforForm = ({ resumeData, setResumeData }: EdiotrFormProps) => {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("Description")}</FormLabel>
                 <FormControl>
-                  <Input {...field} placeholder="A resume my next job" />
+                  <Input
+                    {...field}
+                    placeholder={t("A resume for my next job")}
+                  />
                 </FormControl>
                 <FormDescription>
-                  Describe what this resume if for
+                  {t("Describe what this resume is for")}
                 </FormDescription>
                 <FormMessage />
               </FormItem>

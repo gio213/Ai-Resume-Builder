@@ -1,0 +1,152 @@
+{
+  "Home": {
+    "Create the": "შექმენით",
+    " Perfect Resume": "იდეალური რეზიუმე",
+    "in minutes": "წუთებში",
+    "Our": "ჩვენი",
+    "AI resume builder": "AI რეზიუმეს შექმნელი",
+    "helps you": "გეხმარებათ",
+    "design a professional resume, even if you": "შექმნათ პროფესიული რეზიუმე, თუკი",
+    "Professional resumes, made easy!": "მარტივი პროფესიული რეზიუმე!",
+    "Get started": "დაიწყეთ"
+  },
+  "Resumes": {
+    "Your resumes": "თქვენი რეზიუმეები",
+    "Total": "სულ"
+  },
+  "CreateResumeBtn": {
+    "New resume": "ახალი რეზიუმე"
+  },
+  "ResumeItem": {
+    "Untitled": "სათაურის გარეშე",
+    "Updated": "განახლებული",
+    "Created": "შექმნილი",
+    "Delete": "წაშლა",
+    "Cancel": "გაუქმება",
+    "Print": "ბეჭდვა",
+    "Delete resume": "რეზიუმეს წაშლა",
+    "This will permanently delete the resume Are you sure you want to": "ეს რეზიუმე სრულად წაიშლება. ნამდვილად გსურთ წაშლა"
+  },
+  "ResumeEditor": {
+    "Design your resume": "შექმენით თქვენი რეზიუმეს დიზაინი",
+    "Follow below to create your resume Your progress will be saved automatically": "შექმენით თქვენი რეზიუმე შემდეგი ინსტრუქციების მიხედვით. თქვენი პროგრესი ავტომატურად შეინახება",
+    "Updated": "Updated",
+    "Created": "Created",
+    "Change resume color": "შეცვალეთ რეზიუმეს ფერი",
+    "Change border style": "შეცვალეთ ჩარჩოს სტილი"
+  },
+  "BreadCrumbs": {
+    "General info": "ზოგადი ინფორმაცია",
+    "Personal info": "პირადი ინფორმაცია",
+    "Work experience": "სამუშაო გამოცდილება",
+    "Education": "განათლება",
+    "Skills": "უნარები",
+    "Summary": "შეჯამება"
+  },
+  "GeneralInforForm": {
+    "General info": "ზოგადი ინფორმაცია",
+    "This will not appear on your resume": "ეს არ გამოჩნდება თქვენ რეზიუმეში.",
+    "Project name": "პროექტის სახელი",
+    "My resume": "ჩემი რეზიუმე",
+    "Description": "აღწერა",
+    "A resume for my next job": "რეზიუმე ჩემი შემდეგი სამსახურისთვის",
+    "Describe what this resume is for": "აღწერეთ რისთვის არის ეს რეზიუმე"
+  },
+  "Footer": {
+    "Previous step": "უკან",
+    "Next step": "შემდეგი",
+    "Close": "დახურვა",
+    "Terms": "Terms"
+  },
+  "PersonalInfoForm": {
+    "Personal info": "პირადი ინფორმაცია",
+    "Tell us about yourself": "გვიამბეთ თქვენს შესახებ",
+    "Your photo": "თქვენი ფოტო",
+    "Remove": "წაშლა",
+    "First name": "სახელი",
+    "Last name": "გვარი",
+    "Job title": "პოზიცია",
+    "City": "ქალაქი",
+    "Country": "ქვეყანა",
+    "Phone": "ტელეფონი",
+    "Email": "ელ. ფოსტა"
+  },
+  "WorkExperienceForm": {
+    "Work experience": "სამუშაო გამოცდილება",
+    "Add as many work experiences as you like": "დაამატეთ სამუშაო გამოცდილება, რამდენიც გსურთ",
+    "Add work experience": "დაამატეთ სამუშაო გამოცდილება",
+    "Job title": "პოზიცია",
+    "Company": "კომპანია",
+    "Start date": "დაწყების თარიღი",
+    "End date": "დასრულების თარიღი",
+    "Leave": "დატოვეთ",
+    "empty if you currently work here": "ცარიელი თუ თქვენ ამჟამად მუშაობთ მანდ",
+    "Description": "აღწერა",
+    "Remove work experience": "სამუშაო გამოცდილების წაშლა"
+  },
+  "GenerateExperienceButton": {
+    "Smart fill (AI)": "(AI)-ის გამოყენება",
+    "Generate work experience": "სამუშაო გამოცდილების გენერირება",
+    "Describe this work experience and the AI will generate an optimized entry for you": "აღწერეთ ეს სამუშაო გამოცდილება და AI დააგენერირებს  თქვენისთვის",
+    "Description": "აღწერა",
+    "from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were": "მაგალითად, 2019 წლის ნოემბრიდან 2020 წლის დეკემბრისამდე ვმუშაობდი google-ში პროგრამული უზრუნველყოფის ინჟინერის ადგილზე, ჩემი დავალებები იყო:..."
+  },
+  "EducationForm": {
+    "Education": "განათლება",
+    "Add your education": "დაამატეთ თქვენი განათლება",
+    "Add education": "დაამატეთ განათლება",
+    "Degree": "ხარისხი",
+    "Name of the shcool or university": "სკოლის ან უნივერსიტეტის სახელი",
+    "Start date": "დაწყების თარიღი",
+    "End date": "დასრულების თარიღი",
+    "Remove": "წაშლა"
+  },
+  "SkillForm": {
+    "Skills": "უნარები",
+    "What are you good at?": "რას იცით კარგად?",
+    "Social Media Management, Adobe Premiere,HTML, CSS, JavaScript": "მაგალითად:Adobe Premiere, HTML, CSS, JavaScript...",
+    "Separate each skill with a comma": "გამოყავით მძიმეთით ყველა უნარი"
+  },
+  "SummaryForm": {
+    "Professional summary": "პროფესიული შეჯამება",
+    "Write a short introduction about your resume or let the AI generate one from your entry data": "დაწერეთ მოკლე შეჯამება თქვენი რეზიუმეს შესახებ ან მიეცით საშუალება AI-ს შექმნას თქვენი შეჯამება მონაცემებიდან",
+    "A brief, engaging text about yourself": "მოკლე, საინტერესო ტექსტი თქვენს შესახებ",
+    "Generate (AI)": "გენერირება (AI)"
+  },
+  "Billing": {
+    "Your current plan": "თქვენი მიმდინარე გამოწერა",
+    "Billing": "გამოწერა",
+    "Your subscription will be canceled on": "თქვენი გამოწერა გაუქმდება",
+    "Manage Subscription": "გამოწერის მართვა",
+    "Get Premium Subscription": "მიიღეთ პრემიუმ გამოწერა",
+    "Resume Builder AI Premium": "Resume Builder AI Premium",
+    "Get a premium subscription to unlock more features": "მიიღეთ პრემიუმ გამოწერა, რათა განბლოკოთ მეტი ფუნქცია",
+    "Premium": "პრემიუმი",
+    "Get Premium": "მიიღეთ პრემიუმი",
+    "Premium Plus": "პრემიუმ პლიუსი",
+    "AI tools": "AI ინსტრუმენტები",
+    "Up to 3 resumes": "მხოლოდ 3 რეზიუმე",
+    "Infinite resumes": "ულიმიტო რეზიუმების შექმნა",
+    "Design customization": "დიზაინის პერსონალიზაცია",
+    "Get Premium Plus": "მიიღეთ პრემიუმ პლიუსი"
+  },
+  "ResumePreview": {
+    "Professional profile": "პროფილი",
+    "Work experience": "სამუშაო გამოცდილება",
+    "Education": "განათლება",
+    "Jan": "იან",
+    "Feb": "თებ",
+    "Mar": "მარ",
+    "Apr": "აპრ",
+    "May": "მაი",
+    "Jun": "ივნ",
+    "Jul": "ივლ",
+    "Aug": "აგვ",
+    "Sep": "სექ",
+    "Oct": "ოქტ",
+    "Nov": "ნოე",
+    "Dec": "დეკ",
+    "Present": "მიმდინარე",
+    "Skills": "უნარები"
+  }
+}
