@@ -11,35 +11,95 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations("Layout");
+
+  const baseUrl = "https://www.resumes.ge";
+  const primaryKeywords = [
+    "resume builder",
+    "AI resume writer",
+    "professional resume",
+    "CV maker",
+    "resume templates",
+    "Georgian resume",
+    "free resume builder",
+    "AI resume summary",
+    "resume download",
+    "custom resume creator",
+  ].join(", ");
+
   return {
     title: {
-      template: "%s | " + t("AI Resume Builder"),
-      absolute: t("AI Resume Builder"),
-      default: t("AI Resume Builder"),
+      template: "%s | " + t("Professional AI Resume Builder"),
+      absolute: t("Create Professional Resumes with AI - Free Resume Builder"),
+      default: t("Free Resume Builder | Create Professional Resumes with AI"),
     },
-    description: t("AI Resume Builder for professional resumes!"),
-    robots: "follow, index",
-    applicationName: t("AI Resume Builder"),
-    keywords: t("resume, builder, ai, professional, free"),
+    description: t(
+      "Create professional resumes instantly with our AI-powered resume builder. Free customizable templates, AI resume summary writing, multiple export formats, and expert guidance. Build your perfect resume today!",
+    ),
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+
+    applicationName: t("Professional AI Resume Builder"),
+    keywords: primaryKeywords,
     authors: [{ name: "Giorgi Patsia" }],
-    category: "SASS",
+    category: "Career Tools",
     creator: "Giorgi Patsia",
     generator: "Next.js",
+
+    alternates: {
+      canonical: baseUrl,
+      languages: {
+        "en-US": `${baseUrl}/en`,
+        "ka-GE": `${baseUrl}/ka`,
+      },
+    },
+
     openGraph: {
-      title: t("AI Resume Builder"),
-      description: t("AI Resume Builder for professional resumes!"),
+      title: t("Create Professional Resumes with AI - Free Resume Builder"),
+      description: t(
+        "Build impressive resumes instantly with AI-powered tools. Free templates, customization options, and professional resume summary writing assistance.",
+      ),
       type: "website",
-      url: "https://www.ai-resume-builder.vercel.app",
+      url: baseUrl,
       locale: "en_US",
       images: [
         {
-          url: "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA",
+          url: "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA", // Update with your actual OG image path
           width: 1200,
           height: 630,
-          alt: t("AI Resume Builder"),
+          alt: t("AI Resume Builder Interface"),
         },
       ],
-      siteName: t("AI Resume Builder"),
+      siteName: t("Resumes.ge - Professional AI Resume Builder"),
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: t("Create Professional Resumes with AI - Free Resume Builder"),
+      description: t(
+        "Build impressive resumes instantly with AI-powered tools. Free templates, customization options, and professional resume summary writing assistance.",
+      ),
+      images: [
+        "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA",
+      ], // Update with your actual Twitter image path
+    },
+
+    verification: {
+      google: "rK9_-vqN901L4ekHjv0up-dujJGqARtF0_8qY6kvHMc",
+    },
+
+    other: {
+      "msapplication-TileColor": "#ffffff",
+      "theme-color": "#ffffff",
     },
   };
 };
