@@ -8,9 +8,12 @@ import ManageSubscriptionBtn from "./ManageSubscriptionBtn";
 import GetSubscriptionBtn from "./GetSubscriptionBtn";
 import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Billing",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Billing");
+  return {
+    title: t("Billing"),
+  };
+}
 
 export default async function Page() {
   const { userId } = await auth();

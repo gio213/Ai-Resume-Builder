@@ -1,15 +1,22 @@
 import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("TermsAndConditions");
+  return {
+    title: t("Terms of Service"),
+  };
+}
 
-export default function Page() {
+export default async function Page() {
+  const t = await getTranslations("TermsAndConditions");
   return (
     <main className="mx-auto max-w-prose space-y-6 p-3 py-6">
-      <h1 className="text-center text-2xl font-bold">Terms of Service</h1>
+      <h1 className="text-center text-2xl font-bold">
+        {t("Terms of Service")}
+      </h1>
       <p className="text-center text-sm text-muted-foreground">
-        Effective Date: Jan 21, 2025
+        {t("Effective Date: Jan 21, 2025")}
       </p>
       <p>
         Welcome to AI Resume Builder. These Terms of Service (&quot;Terms&quot;)

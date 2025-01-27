@@ -41,7 +41,8 @@
     "Work experience": "Work experience",
     "Education": "Education",
     "Skills": "Skills",
-    "Summary": "Summary"
+    "Summary": "Summary",
+    "Language": "Languages"
   },
   "GeneralInforForm": {
     "General info": "General info",
@@ -149,5 +150,27 @@
     "Dec": "Dec",
     "Present": "Present",
     "Skills": "Skills"
+  },
+  "NavBar": {
+    "Billing": "Billing",
+    "AI Resume Builder": "AI Resume Builder"
+  },
+  "ThemeToggle": {
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
+  },
+  "TermsAndConditions": {
+    "Terms of Service": "Terms of Service",
+    "Effective Date: Jan 21, 2025": "Effective Date: Jan 21, 2025"
+  },
+  "Layout": {
+    "AI Resume Builder": "AI Resume Builder",
+    "AI Resume Builder for professional resumes!": "AI Resume Builder for professional resumes!"
+  },
+  "LangugageForm": {
+    "Language": "Language",
+    "Add language": "Add language",
+    "Remove": "Remove"
   }
 }

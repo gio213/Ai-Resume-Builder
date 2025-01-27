@@ -16,7 +16,6 @@ import { getLocale } from "next-intl/server";
 export const generateSummary = async (input: GenerateSUmmaryInput) => {
   const { userId } = await auth();
   const locale = await getLocale();
-  console.log("locale from open ai server", locale);
 
   if (!userId) {
     throw new Error("User not authenticated");

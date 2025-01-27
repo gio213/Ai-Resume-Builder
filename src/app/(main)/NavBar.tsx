@@ -9,9 +9,11 @@ import ThemeToggle from "@/components/ThemeToggle";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
 import LanguageSwitcher from "@/components/LangugageSwitcher";
+import { useTranslations } from "next-intl";
 
 const NavBar = () => {
   const { theme } = useTheme();
+  const t = useTranslations("NavBar");
 
   return (
     <header className="shadow-sm">
@@ -25,7 +27,7 @@ const NavBar = () => {
             className="rounded-full"
           />
           <span className="text-xl font-bold tracking-tight">
-            AI Resume Builder
+            {t("AI Resume Builder")}
           </span>
         </Link>
         <div className="just flex items-center gap-3">
@@ -44,7 +46,7 @@ const NavBar = () => {
           >
             <UserButton.MenuItems>
               <UserButton.Link
-                label="Billing"
+                label={t("Billing")}
                 labelIcon={<CreditCard />}
                 href="/billing"
               />

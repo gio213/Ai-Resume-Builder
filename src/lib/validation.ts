@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export const optionalString = z.string().trim().optional().or(z.literal(""));
+export const requiredString = z.string().trim().min(1, "Required");
 
 export const generalInfoSchema = z.object({
   title: optionalString,
@@ -58,6 +59,16 @@ export const educationSchema = z.object({
     )
     .optional(),
 });
+export const langugageSchema = z.object({
+  languages: z
+    .array(
+      z.object({
+        languageName: optionalString,
+        languageLevel: optionalString,
+      }),
+    )
+    .optional(),
+});
 
 export const skillsSchema = z.object({
   skills: z.array(z.string().trim()).optional(),
@@ -69,6 +80,7 @@ export const summarySchema = z.object({
 
 export type SkillsValues = z.infer<typeof skillsSchema>;
 export type EducationValues = z.infer<typeof educationSchema>;
+export type LanguageValues = z.infer<typeof langugageSchema>;
 export type WorkExperiencesValues = z.infer<typeof workExperienceSchema>;
 export type WorkExperience = NonNullable<
   z.infer<typeof workExperienceSchema>["workExperiences"]
@@ -79,6 +91,7 @@ export const resumeSchema = z.object({
   ...generalInfoSchema.shape,
   ...personalInfoSchema.shape,
   ...workExperienceSchema.shape,
+  ...langugageSchema.shape,
   ...educationSchema.shape,
   ...skillsSchema.shape,
   ...summarySchema.shape,

@@ -9,7 +9,7 @@ import { del, put } from "@vercel/blob";
 
 export const saveResume = async (values: ResumeValues) => {
   const { id } = values;
-  const { photo, workExperiences, educations, ...resumeValues } =
+  const { photo, workExperiences, educations, languages, ...resumeValues } =
     resumeSchema.parse(values);
 
   const { userId } = await auth();
@@ -92,6 +92,14 @@ export const saveResume = async (values: ResumeValues) => {
             };
           }),
         },
+        Language: {
+          deleteMany: {},
+          create: languages?.map((lang) => {
+            return {
+              ...lang,
+            };
+          }),
+        },
         updatedAt: new Date(),
       },
     });
@@ -116,6 +124,13 @@ export const saveResume = async (values: ResumeValues) => {
               ...edu,
               startDate: edu.startDate ? new Date(edu.startDate) : undefined,
               endDate: edu.endDate ? new Date(edu.endDate) : undefined,
+            };
+          }),
+        },
+        Language: {
+          create: languages?.map((lang) => {
+            return {
+              ...lang,
             };
           }),
         },

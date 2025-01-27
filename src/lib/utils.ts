@@ -44,6 +44,10 @@ export const mapToResumeValues = (data: ResumeServerData): ResumeValues => {
       startDate: edu.startDate?.toISOString().split("T")[0] || undefined,
       endDate: edu.endDate?.toISOString().split("T")[0] || undefined,
     })),
+    languages: data.Language.map((lang) => ({
+      languageName: lang.languageName || undefined,
+      languageLevel: lang.languageLevel || undefined,
+    })),
     skills: data.skills,
     borderStyle: data.borderStyle,
     colorHex: data.colorHex,

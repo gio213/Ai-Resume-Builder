@@ -8,6 +8,7 @@ export interface EdiotrFormProps {
 export const resumeDataInclude = {
   workExperiences: true,
   Education: true,
+  Language: true,
 } satisfies Prisma.ResumeInclude;
 
 export type ResumeServerData = Prisma.ResumeGetPayload<{

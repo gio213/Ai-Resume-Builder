@@ -5,16 +5,27 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: {
-    template: "%s | AI Resume Builder",
-    absolute: "AI Resume Builder",
-  },
-  description: "AI Resume Builder for professional resumes!",
+// export const metadata: Metadata = {
+//   title: {
+//     template: "%s | AI Resume Builder",
+//     absolute: "AI Resume Builder",
+//   },
+//   description: "AI Resume Builder for professional resumes!",
+// };
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getTranslations("Layout");
+  return {
+    title: {
+      template: "%s | " + t("AI Resume Builder"),
+      absolute: t("AI Resume Builder"),
+    },
+    description: t("AI Resume Builder for professional resumes!"),
+  };
 };
 
 export default async function RootLayout({

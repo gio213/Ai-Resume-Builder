@@ -8,9 +8,12 @@ import { getUserSubscriptionLevel } from "@/lib/subscriptions";
 import { canCreateResume } from "@/lib/permissions";
 import { getTranslations } from "next-intl/server";
 
-export const metadata: Metadata = {
-  title: "Your resumes",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Resumes");
+  return {
+    title: t("Your resumes"),
+  };
+}
 
 export default async function Page() {
   const { userId } = await auth();

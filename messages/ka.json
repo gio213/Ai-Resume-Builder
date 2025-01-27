@@ -41,7 +41,8 @@
     "Work experience": "სამუშაო გამოცდილება",
     "Education": "განათლება",
     "Skills": "უნარები",
-    "Summary": "შეჯამება"
+    "Summary": "შეჯამება",
+    "Language": "ენები"
   },
   "GeneralInforForm": {
     "General info": "ზოგადი ინფორმაცია",
@@ -148,5 +149,28 @@
     "Dec": "დეკ",
     "Present": "მიმდინარე",
     "Skills": "უნარები"
+  },
+  "NavBar": {
+    "Billing": "გამოწერა",
+    "AI Resume Builder": "რეზიუმეს შექმნა AI-ს დახმარებით!"
+  },
+  "ThemeToggle": {
+    "Light": "ღია",
+    "Dark": "მუქი",
+    "System": "სისტემა"
+  },
+  "TermsAndConditions": {
+    "Terms of service": "მომსახურების პირობები",
+    "Terms of Service": "მომსახურების პირობები",
+    "Effective Date: Jan 21, 2025": "ძალაში შესვლის თარიღი: 21 იანვარი, 2025"
+  },
+  "Layout": {
+    "AI Resume Builder": "რეზიუმეს შექმნა AI-ს დახმარებით!",
+    "AI Resume Builder for professional resumes!": "პროფესიული რეზიუმეს შექმნა AI-ს დახმარებით!"
+  },
+  "LangugageForm": {
+    "Language": "ენა",
+    "Add language": "ენის დამატება",
+    "Remove": "წაშლა"
   }
 }

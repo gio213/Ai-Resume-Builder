@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,7 +7,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Languages } from "lucide-react";
 
 const LANGUAGES = [
   { code: "en", name: "English" },
@@ -15,7 +14,12 @@ const LANGUAGES = [
 ];
 
 const LanguageSwitcher = () => {
-  const currentLocale = Cookies.get("locale") || "en";
+  const [currentLocale, setCurrentLocale] = useState("en");
+
+  useEffect(() => {
+    const locale = Cookies.get("locale") || "en";
+    setCurrentLocale(locale);
+  }, []);
 
   const changeLanguage = (locale: string) => {
     Cookies.set("locale", locale, { expires: 365 });
@@ -26,15 +30,15 @@ const LanguageSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <Languages className="size-[1.2rm] text-foreground transition-all" />
+          {currentLocale === "en" ? "EN" : "KA"}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent className="flex flex-col gap-y-0.5" align="end">
         {LANGUAGES.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
             onClick={() => changeLanguage(lang.code)}
-            className={currentLocale === lang.code ? "bg-accent" : ""}
+            className={`cursor-pointer ${currentLocale === lang.code ? "bg-accent" : ""}`}
           >
             {lang.name}
           </DropdownMenuItem>

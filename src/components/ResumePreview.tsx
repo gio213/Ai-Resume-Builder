@@ -43,6 +43,7 @@ const ResumePreview = ({
         <SummarySection resumeData={resumeData} />
         <WorkExperienceSection resumeData={resumeData} />
         <EducationSection resumeData={resumeData} />
+        <LanguageSection resumeData={resumeData} />
         <SkillsSection resumeData={resumeData} />
       </div>
     </div>
@@ -205,7 +206,9 @@ const EducationSection = ({ resumeData }: ResumeSectionProps) => {
     <>
       <hr className="border-2" style={{ borderColor: colorHex }} />
       <div className="space-y-3">
-        <p className="text-lg font-semibold">{t("Education")}</p>
+        <p style={{ color: colorHex }} className="text-lg font-semibold">
+          {t("Education")}
+        </p>
         {educations?.map((edu, index) => (
           <div key={index} className="break-inside-avoid space-y-1">
             <div
@@ -229,6 +232,44 @@ const EducationSection = ({ resumeData }: ResumeSectionProps) => {
         ))}
       </div>
     </>
+  );
+};
+
+const LanguageSection = ({ resumeData }: ResumeSectionProps) => {
+  if (!resumeData) return null;
+
+  const { languages, colorHex } = resumeData;
+
+  if (!languages || languages.length === 0) return null;
+
+  return (
+    <section style={{ padding: "0.5rem 0" }}>
+      <h3
+        style={{
+          color: colorHex || "#333",
+          marginBottom: "0.5rem",
+          fontSize: "1.2rem",
+        }}
+      >
+        Languages
+      </h3>
+      <ul
+        style={{
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "0.5rem",
+        }}
+      >
+        {languages.map((lang, index) => (
+          <li key={index} style={{ fontSize: "0.9rem", color: "#555" }}>
+            <strong>{lang.languageName}:</strong> {lang.languageLevel}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 
