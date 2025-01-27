@@ -171,6 +171,8 @@
   "LangugageForm": {
     "Language": "ენა",
     "Add language": "ენის დამატება",
-    "Remove": "წაშლა"
+    "Remove": "წაშლა",
+    "Level": "დონე",
+    "Native": "მშობლიური"
   }
 }

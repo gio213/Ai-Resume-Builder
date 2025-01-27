@@ -236,8 +236,9 @@ const EducationSection = ({ resumeData }: ResumeSectionProps) => {
 };
 
 const LanguageSection = ({ resumeData }: ResumeSectionProps) => {
-  if (!resumeData) return null;
+  const t = useTranslations("LangugageForm");
 
+  if (!resumeData) return null;
   const { languages, colorHex } = resumeData;
 
   if (!languages || languages.length === 0) return null;
@@ -265,7 +266,8 @@ const LanguageSection = ({ resumeData }: ResumeSectionProps) => {
       >
         {languages.map((lang, index) => (
           <li key={index} style={{ fontSize: "0.9rem", color: "#555" }}>
-            <strong>{lang.languageName}:</strong> {lang.languageLevel}
+            <strong>{lang.languageName}:</strong>{" "}
+            {lang.languageLevel === "Native" ? t("Native") : lang.languageLevel}
           </li>
         ))}
       </ul>
@@ -297,6 +299,7 @@ const SkillsSection = ({ resumeData }: ResumeSectionProps) => {
         <div className="flex break-inside-avoid flex-wrap gap-2">
           {skills.map((skill, index) => (
             <Badge
+              className="text-customTextForSkills"
               style={{
                 backgroundColor: colorHex,
                 borderRadius: borderRadiusClass,

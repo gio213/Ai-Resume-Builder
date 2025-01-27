@@ -131,6 +131,7 @@ interface LangugageItemProps {
 }
 
 const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
+  const t = useTranslations("LangugageForm");
   const {
     attributes,
     listeners,
@@ -140,7 +141,7 @@ const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
     isDragging,
   } = useSortable({ id });
 
-  const languageLevels = ["A1", "A2", "B1", "B2", "C1", "C2"];
+  const languageLevels = ["Native", "A1", "A2", "B1", "B2", "C1", "C2"];
 
   return (
     <div
@@ -152,7 +153,9 @@ const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
       )}
     >
       <div className="flex justify-between gap-2">
-        <span className="font-semibold">Language {index + 1} </span>
+        <span className="font-semibold">
+          {t("Language")} {index + 1}{" "}
+        </span>
         <GripHorizontal
           {...attributes}
           {...listeners}
@@ -165,7 +168,7 @@ const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
         name={`languages.${index}.languageName`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Language</FormLabel>
+            <FormLabel>{t("Language")}</FormLabel>
             <Input {...field} />
           </FormItem>
         )}
@@ -176,7 +179,7 @@ const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
         name={`languages.${index}.languageLevel`}
         render={({ field }) => (
           <FormItem>
-            <FormLabel>Level</FormLabel>
+            <FormLabel>{t("Level")}</FormLabel>
             <div className="flex items-center gap-2">
               {languageLevels.map((level) => (
                 <Badge
@@ -190,7 +193,7 @@ const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
                   key={level}
                   variant="secondary"
                 >
-                  {level}
+                  {level === "Native" ? t("Native") : level}
                 </Badge>
               ))}
             </div>
@@ -203,7 +206,7 @@ const LangugageItem = ({ form, id, index, remove }: LangugageItemProps) => {
         type="button"
         onClick={() => remove(index)}
       >
-        Remove
+        {t("Remove")}
       </Button>
     </div>
   );

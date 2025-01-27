@@ -171,6 +171,8 @@
   "LangugageForm": {
     "Language": "Language",
     "Add language": "Add language",
-    "Remove": "Remove"
+    "Remove": "Remove",
+    "Level": "Level",
+    "Native": "Native"
   }
 }
