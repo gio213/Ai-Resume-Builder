@@ -30,7 +30,7 @@ const NavBar = () => {
             {t("AI Resume Builder")}
           </span>
         </Link>
-        <div className="just flex items-center gap-3">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
           <LanguageSwitcher />
           <UserButton

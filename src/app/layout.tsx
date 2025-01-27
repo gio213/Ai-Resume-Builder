@@ -29,11 +29,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: {
       template: "%s | " + t("Professional AI Resume Builder"),
-      absolute: t("Create Professional Resumes with AI - Free Resume Builder"),
-      default: t("Free Resume Builder | Create Professional Resumes with AI"),
+      absolute: t("Create Professional Resumes with AI Free Resume Builder"),
+      default: t("Free Resume Builder Create Professional Resumes with AI"),
     },
     description: t(
-      "Create professional resumes instantly with our AI-powered resume builder. Free customizable templates, AI resume summary writing, multiple export formats, and expert guidance. Build your perfect resume today!",
+      "Create professional resumes instantly with our AI powered resume builder Free customizable templates AI resume summary writing multiple export formats and expert guidance Build your perfect resume today",
     ),
 
     robots: {
@@ -64,9 +64,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
     },
 
     openGraph: {
-      title: t("Create Professional Resumes with AI - Free Resume Builder"),
+      title: t("Create Professional Resumes with AI Free Resume Builder"),
       description: t(
-        "Build impressive resumes instantly with AI-powered tools. Free templates, customization options, and professional resume summary writing assistance.",
+        "Build impressive resumes instantly with AI-powered tools Free templates customization options and professional resume summary writing assistance",
       ),
       type: "website",
       url: baseUrl,
@@ -79,14 +79,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
           alt: t("AI Resume Builder Interface"),
         },
       ],
-      siteName: t("Resumes.ge - Professional AI Resume Builder"),
+      siteName: t("Resumes ge Professional AI Resume Builder"),
     },
 
     twitter: {
       card: "summary_large_image",
-      title: t("Create Professional Resumes with AI - Free Resume Builder"),
+      title: t("Create Professional Resumes with AI Free Resume Builder"),
       description: t(
-        "Build impressive resumes instantly with AI-powered tools. Free templates, customization options, and professional resume summary writing assistance.",
+        "Build impressive resumes instantly with AI powered tools Free templates customization options and professional resume summary writing assistance",
       ),
       images: [
         "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA",

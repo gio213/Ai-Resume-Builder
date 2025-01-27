@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button className="border-0" variant="outline" size="icon">
           {currentLocale === "en" ? "EN" : "KA"}
         </Button>
       </DropdownMenuTrigger>
