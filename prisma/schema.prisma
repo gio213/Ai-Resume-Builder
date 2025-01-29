@@ -14,6 +14,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+  CANCELED
+}
+
 model Resume {
   id          String  @id @default(cuid())
   userId      String
@@ -30,11 +37,13 @@ model Resume {
   country     String?
   phone       String?
   email       String?
+  isPaid      Boolean @default(false)
 
   workExperiences WorkExpereince[]
   Education       Education[]
   skills          String[]
   Language        Language[]
+  payments        Payment[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -91,17 +100,18 @@ model Language {
   @@map("languages")
 }
 
-model UserSubscription {
-  id                      String   @id @default(cuid())
-  userId                  String   @unique
-  stripeCustomerId        String   @unique
-  stripeSubscriptionId    String   @unique
-  stripePriceId           String
-  stripeCurrentPeriodEnd  DateTime
-  stripeCancelAtPeriodEnd Boolean  @default(false)
+model Payment {
+  id                    String        @id @default(cuid())
+  userId                String
+  stripePaymentIntentId String?       @unique
+  amount                Int?
+  currency              String?
+  status                PaymentStatus @default(PENDING)
+  resumeId              String        @unique
+  resume                Resume        @relation(fields: [resumeId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("user_subscriptions")
+  @@map("payments")
 }

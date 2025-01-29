@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import logo from "@/assets/logo.png";
 import { UserButton } from "@clerk/nextjs";
-import { CreditCard } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { dark } from "@clerk/themes";
 import { useTheme } from "next-themes";
@@ -43,15 +42,7 @@ const NavBar = () => {
               },
               baseTheme: theme === "dark" ? dark : undefined,
             }}
-          >
-            <UserButton.MenuItems>
-              <UserButton.Link
-                label={t("Billing")}
-                labelIcon={<CreditCard />}
-                href="/billing"
-              />
-            </UserButton.MenuItems>
-          </UserButton>
+          ></UserButton>
         </div>
       </div>
     </header>

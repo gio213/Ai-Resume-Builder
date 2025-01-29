@@ -4,8 +4,6 @@ import { auth } from "@clerk/nextjs/server";
 import { Metadata } from "next";
 import CreateResumeBtn from "./CreateResumeBtn";
 import ResumeItem from "./ResumeItem";
-import { getUserSubscriptionLevel } from "@/lib/subscriptions";
-import { canCreateResume } from "@/lib/permissions";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,7 +19,7 @@ export default async function Page() {
 
   if (!userId) return null;
 
-  const [resumes, totalCount, subscriptionLevel] = await Promise.all([
+  const [resumes, totalCount] = await Promise.all([
     prisma.resume.findMany({
       where: {
         userId,
@@ -36,14 +34,11 @@ export default async function Page() {
         userId,
       },
     }),
-    getUserSubscriptionLevel(userId),
   ]);
 
   return (
     <main className="mx-auto w-full max-w-7xl space-y-6 px-3 py-6">
-      <CreateResumeBtn
-        canCreate={canCreateResume(subscriptionLevel, totalCount)}
-      />
+      <CreateResumeBtn />
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">{t("Your resumes")}</h1>
         <p>

@@ -14,11 +14,15 @@ const LANGUAGES = [
 ];
 
 const LanguageSwitcher = () => {
-  const [currentLocale, setCurrentLocale] = useState("en");
+  const [currentLocale, setCurrentLocale] = useState("ka");
 
   useEffect(() => {
-    const locale = Cookies.get("locale") || "en";
-    setCurrentLocale(locale);
+    const locale = Cookies.get("locale") || "ka";
+    if (!locale) {
+      Cookies.set("locale", "ka", { expires: 365 });
+    } else {
+      setCurrentLocale(locale);
+    }
   }, []);
 
   const changeLanguage = (locale: string) => {
@@ -30,7 +34,7 @@ const LanguageSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className="border-0" variant="outline" size="icon">
-          {currentLocale === "en" ? "EN" : "KA"}
+          {currentLocale === "ka" ? "KA" : "EN"}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="flex flex-col gap-y-0.5" align="end">

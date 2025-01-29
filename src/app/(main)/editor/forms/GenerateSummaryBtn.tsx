@@ -4,9 +4,6 @@ import { ResumeValues } from "@/lib/validation";
 import { WandSparklesIcon } from "lucide-react";
 import React, { useState } from "react";
 import { generateSummary } from "./actions";
-import { useSubsciptionLevel } from "../../SubscriptionLevelProvider";
-import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseCustomizations } from "@/lib/permissions";
 import { useTranslations } from "next-intl";
 
 interface GenerateSummaryBtnProps {
@@ -18,18 +15,11 @@ const GenerateSummaryBtn = ({
   onSumarryGenerated,
   resumeData,
 }: GenerateSummaryBtnProps) => {
-  const subscriptionLevel = useSubsciptionLevel();
-  const premiumModal = usePremiumModal();
   const { toast } = useToast();
   const t = useTranslations("SummaryForm");
   const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
-    if (!canUseCustomizations(subscriptionLevel)) {
-      premiumModal.setOpen(true);
-      return;
-    }
-
     try {
       setLoading(true);
       const aiResponse = await generateSummary(resumeData);

@@ -27,9 +27,6 @@ import {
 } from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import LoadingButton from "@/components/LoadingButton";
-import { useSubsciptionLevel } from "../../SubscriptionLevelProvider";
-import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseCustomizations } from "@/lib/permissions";
 import { useTranslations } from "next-intl";
 
 interface GenerateExperienceButtonProps {
@@ -40,8 +37,7 @@ const GenerateExperienceButton = ({
   onWorkExperienceGenerated,
 }: GenerateExperienceButtonProps) => {
   const [showInputDialog, setShowInputDialog] = useState(false);
-  const subscriptionLevel = useSubsciptionLevel();
-  const premiumModal = usePremiumModal();
+
   const t = useTranslations("GenerateExperienceButton");
   return (
     <>
@@ -49,10 +45,6 @@ const GenerateExperienceButton = ({
         variant={"outline"}
         type="button"
         onClick={() => {
-          if (!canUseCustomizations(subscriptionLevel)) {
-            premiumModal.setOpen(true);
-            return;
-          }
           setShowInputDialog(true);
         }}
       >

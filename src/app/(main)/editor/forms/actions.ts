@@ -1,8 +1,6 @@
 "use server";
 
 import openAi from "@/lib/openAi";
-import { canUseAiTools } from "@/lib/permissions";
-import { getUserSubscriptionLevel } from "@/lib/subscriptions";
 import {
   GenerateSUmmaryInput,
   generateSummarySchema,
@@ -19,12 +17,6 @@ export const generateSummary = async (input: GenerateSUmmaryInput) => {
 
   if (!userId) {
     throw new Error("User not authenticated");
-  }
-
-  const subscriptionLevel = await getUserSubscriptionLevel(userId);
-
-  if (!canUseAiTools(subscriptionLevel)) {
-    throw new Error("You need a premium subscription to use AI tools");
   }
 
   const { jobTitle, workExperiences, educations, skills } =
@@ -94,12 +86,6 @@ export const generateWorkExperience = async (
 
   if (!userId) {
     throw new Error("User not authenticated");
-  }
-
-  const subscriptionLevel = await getUserSubscriptionLevel(userId);
-
-  if (!canUseAiTools(subscriptionLevel)) {
-    throw new Error("You need a premium subscription to use AI tools");
   }
 
   const { description } = generateWorkExperienceSchema.parse(input);

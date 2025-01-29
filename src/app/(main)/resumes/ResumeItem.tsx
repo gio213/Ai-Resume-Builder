@@ -7,14 +7,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useToast } from "@/hooks/use-toast";
 import { ResumeServerData } from "@/lib/types";
 import { mapToResumeValues } from "@/lib/utils";
 import { formatDate } from "date-fns";
-import { MoreVertical, Printer, Trash2 } from "lucide-react";
+import {
+  LockKeyhole,
+  MoreVertical,
+  Printer,
+  Trash2,
+  UnlockKeyhole,
+} from "lucide-react";
 import Link from "next/link";
 import React, { useRef, useState, useTransition } from "react";
-import { deleteResume } from "./actions";
+import { createCheckoutSession, deleteResume } from "./actions";
 import { useReactToPrint } from "react-to-print";
 import {
   Dialog,
@@ -26,6 +31,7 @@ import {
 } from "@/components/ui/dialog";
 import LoadingButton from "@/components/LoadingButton";
 import { useTranslations } from "next-intl";
+import { useToast } from "@/hooks/use-toast";
 
 interface ResumeItemProps {
   resume: ResumeServerData;
@@ -72,7 +78,11 @@ const ResumeItem = ({ resume }: ResumeItemProps) => {
           <div className="from absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent" />
         </Link>
       </div>
-      <MoreMenu resumeId={resume.id} onPrintClick={reactToPrint} />
+      {resume.isPaid ? (
+        <MoreMenu resumeId={resume.id} onPrintClick={reactToPrint} />
+      ) : (
+        <CheckPaiedOrNot resume={resume} />
+      )}
     </div>
   );
 };
@@ -179,10 +189,44 @@ const DeleteConfirmation = ({
             {t("Delete")}
           </LoadingButton>
           <Button variant={"secondary"} onClick={() => onOpenChange(false)}>
-           {t("Cancel")}
+            {t("Cancel")}
           </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
+  );
+};
+
+const CheckPaiedOrNot = ({ resume }: ResumeItemProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handlePay = async () => {
+    try {
+      if (!resume.isPaid) {
+        const redirectUrl = await createCheckoutSession(resume.id);
+        if (redirectUrl) {
+          window.location.href = redirectUrl;
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <Button
+      onClick={handlePay}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      variant={"ghost"}
+      size={"icon"}
+      className="absolute right-0.5 top-0.5 opacity-0 transition-opacity group-hover:opacity-100"
+    >
+      {!isHovered ? (
+        <LockKeyhole className="size-4" />
+      ) : (
+        <UnlockKeyhole className="size-4" />
+      )}
+    </Button>
   );
 };

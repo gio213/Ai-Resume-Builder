@@ -70,7 +70,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       ),
       type: "website",
       url: baseUrl,
-      locale: "en_US",
+      locale: "ka_GE",
       images: [
         {
           url: "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA", // Update with your actual OG image path

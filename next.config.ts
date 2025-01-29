@@ -2,10 +2,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
-/** @type {import('next').NextConfig} */
 
 const nextConfig: NextConfig = {
-  /* config options here */
   experimental: {
     serverActions: {
       bodySizeLimit: "4mb",
@@ -16,12 +14,6 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "tokxv8ehtdjc1lpj.public.blob.vercel-storage.com",
-      },
-    ],
-    localPatterns: [
-      {
-        pathname: "/assets/**",
-        search: "",
       },
     ],
   },

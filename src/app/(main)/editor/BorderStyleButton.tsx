@@ -1,9 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Circle, Square, Squircle } from "lucide-react";
 import React from "react";
-import { useSubsciptionLevel } from "../SubscriptionLevelProvider";
-import usePremiumModal from "@/hooks/usePremiumModal";
-import { canUseCustomizations } from "@/lib/permissions";
 import { useTranslations } from "next-intl";
 
 export const BorderStyles = {
@@ -23,15 +20,9 @@ const BorderStyleButton = ({
   borderStyle,
   onChange,
 }: BorderStyleButtonProps) => {
-  const subscriptionLevel = useSubsciptionLevel();
-  const premiumModal = usePremiumModal();
   const t = useTranslations("ResumeEditor");
 
   const handleClick = () => {
-    if (!canUseCustomizations(subscriptionLevel)) {
-      premiumModal.setOpen(true);
-      return;
-    }
     const currentIndex = borderStyle ? borderStyles.indexOf(borderStyle) : 0;
     const nextIndex = (currentIndex + 1) % borderStyles.length;
 

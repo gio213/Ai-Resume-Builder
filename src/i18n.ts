@@ -5,7 +5,7 @@ export default getRequestConfig(async () => {
   // Determine the locale from cookies, headers, or other methods
   const cookieStore = cookies();
   const localeCookie = (await cookieStore).get("locale");
-  const defaultLocale = "en";
+  const defaultLocale = "ka";
   const supportedLocales = ["en", "ka"];
 
   let locale = defaultLocale;
