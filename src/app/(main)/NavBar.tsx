@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo1.webp";
 import { UserButton } from "@clerk/nextjs";
 import ThemeToggle from "@/components/ThemeToggle";
 import { dark } from "@clerk/themes";
@@ -19,6 +19,7 @@ const NavBar = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 p-3">
         <Link href={"/resumes"} className="flex items-center gap-2">
           <Image
+            loader={({ src }) => src}
             src={logo}
             alt="logo"
             width={35}

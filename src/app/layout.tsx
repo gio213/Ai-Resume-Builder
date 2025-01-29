@@ -24,6 +24,16 @@ export const generateMetadata = async (): Promise<Metadata> => {
     "AI resume summary",
     "resume download",
     "custom resume creator",
+    "რეზიუმეს შემქმნელი",
+    "AI რეზიუმეს მწერალი",
+    "პროფესიონალური რეზიუმე",
+    "CV შემქმნელი",
+    "რეზიუმეს შაბლონები",
+    "ქართული რეზიუმე",
+    "უფასო რეზიუმეს შემქმნელი",
+    "AI რეზიუმეს შეჯამება",
+    "რეზიუმეს ჩამოტვირთვა",
+    "მორგებული რეზიუმეს შემქმნელი",
   ].join(", ");
 
   return {
@@ -73,7 +83,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       locale: "ka_GE",
       images: [
         {
-          url: "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA", // Update with your actual OG image path
+          url: "https://github.com/gio213/Ai-Resume-Builder/blob/main/src/assets/resume-preview.jpg?raw=true", // Update with your actual OG image path
           width: 1200,
           height: 630,
           alt: t("AI Resume Builder Interface"),
@@ -89,8 +99,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
         "Build impressive resumes instantly with AI powered tools Free templates customization options and professional resume summary writing assistance",
       ),
       images: [
-        "https://raw.githubusercontent.com/gio213/Ai-Resume-Builder/refs/heads/main/src/assets/logo.png?token=GHSAT0AAAAAAC4NWWNBBOURI7OWJKTCUPBGZ4XTGXA",
+        "https://github.com/gio213/Ai-Resume-Builder/blob/main/src/assets/resume-preview.jpg?raw=true",
       ], // Update with your actual Twitter image path
+    },
+    facebook: {
+      appId: "965909851625158",
     },
 
     verification: {

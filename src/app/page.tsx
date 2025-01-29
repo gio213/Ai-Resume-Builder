@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import logo from "@/assets/logo.png";
 import resumePrevewImage from "@/assets/resume-preview.jpg";
+import logo1 from "@/assets/logo.webp";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -19,7 +19,7 @@ export default function Home() {
         <div className="flex max-w-prose flex-col items-center justify-center space-y-6 md:items-start">
           <Image
             loader={({ src }) => src}
-            src={logo}
+            src={logo1}
             alt="Logo"
             width={150}
             height={150}
