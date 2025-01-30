@@ -6,7 +6,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
-
+import { CookiesProvider } from "next-client-cookies/server";
 const inter = Inter({ subsets: ["latin"] });
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -30,7 +30,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
     "CV შემქმნელი",
     "რეზიუმეს შაბლონები",
     "ქართული რეზიუმე",
-    "უფასო რეზიუმეს შემქმნელი",
     "AI რეზიუმეს შეჯამება",
     "რეზიუმეს ჩამოტვირთვა",
     "მორგებული რეზიუმეს შემქმნელი",
@@ -83,7 +82,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       locale: "ka_GE",
       images: [
         {
-          url: "https://github.com/gio213/Ai-Resume-Builder/blob/main/src/assets/resume-preview.jpg?raw=true", // Update with your actual OG image path
+          url: "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738264582/resume-prew-geo_mjhbkc.png", // Update with your actual OG image path
           width: 1200,
           height: 630,
           alt: t("AI Resume Builder Interface"),
@@ -99,7 +98,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
         "Build impressive resumes instantly with AI powered tools Free templates customization options and professional resume summary writing assistance",
       ),
       images: [
-        "https://github.com/gio213/Ai-Resume-Builder/blob/main/src/assets/resume-preview.jpg?raw=true",
+        "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738264582/resume-prew-geo_mjhbkc.png",
       ], // Update with your actual Twitter image path
     },
     facebook: {
@@ -136,7 +135,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <NextIntlClientProvider messages={messages}>
-              {children}
+              <CookiesProvider>{children}</CookiesProvider>
             </NextIntlClientProvider>
             <Toaster />
           </ThemeProvider>

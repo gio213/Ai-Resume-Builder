@@ -9,6 +9,21 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        dropFromTop: {
+          "0%": {
+            transform: "translateY(-100vh) rotate(-30deg) scale(0.5)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0) rotate(0deg) scale(1)",
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        dropFromTop: "dropFromTop 1s ease-out forwards",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

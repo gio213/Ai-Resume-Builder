@@ -6,6 +6,7 @@ import CreateResumeBtn from "./CreateResumeBtn";
 import ResumeItem from "./ResumeItem";
 import { getTranslations } from "next-intl/server";
 import PaymentStatusMessage from "./PaymentStatusMessage";
+import dottBg from "@/assets/dotted-pattern.webp";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Resumes");
@@ -38,7 +39,14 @@ export default async function Page() {
   ]);
 
   return (
-    <main className="mx-auto w-full max-w-7xl space-y-6 px-3 py-6">
+    <main
+      className="mx-auto w-full max-w-7xl space-y-6 px-3 py-6"
+      style={{
+        backgroundImage: `url(${dottBg.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <CreateResumeBtn />
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">{t("Your resumes")}</h1>

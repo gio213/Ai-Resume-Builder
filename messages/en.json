@@ -179,6 +179,7 @@
   },
   "LangugageForm": {
     "Language": "Language",
+    "Languages": "Languages",
     "Add language": "Add language",
     "Remove": "Remove",
     "Level": "Level",

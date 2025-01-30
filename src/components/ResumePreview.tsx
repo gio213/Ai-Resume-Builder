@@ -252,7 +252,7 @@ const LanguageSection = ({ resumeData }: ResumeSectionProps) => {
           fontSize: "1.2rem",
         }}
       >
-        Languages
+        {t("Languages")}
       </h3>
       <ul
         style={{
