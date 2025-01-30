@@ -125,7 +125,7 @@ const MoreMenu = ({ resumeId, onPrintClick }: MoreMenuProps) => {
             onClick={onPrintClick}
           >
             <Printer className="size-4" />
-            {t("Print")}
+            {t("Print or Download")}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
