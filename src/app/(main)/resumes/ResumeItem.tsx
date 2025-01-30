@@ -149,19 +149,23 @@ const DeleteConfirmation = ({
   onOpenChange,
   open,
 }: DeleteConfirmationProps) => {
-  const { toast } = useToast();
   const [isPending, startTrasition] = useTransition();
   const t = useTranslations("ResumeItem");
+  const { toast } = useToast();
 
   const handleDelete = async () => {
     startTrasition(async () => {
       try {
         await deleteResume(resumeId);
+        toast({
+          title: "Resume deleted",
+          description: "The resume has been deleted successfully",
+        });
         onOpenChange(false);
       } catch (error) {
         console.error(error);
         toast({
-          variant: "default",
+          title: "Failed to delete resume",
           description: "An error occurred while deleting the resume",
         });
       }

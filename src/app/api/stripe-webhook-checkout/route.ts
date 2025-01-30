@@ -3,6 +3,7 @@ import stripe from "@/lib/stripe";
 import { NextRequest } from "next/server";
 import Stripe from "stripe";
 import { PaymentStatus } from "@prisma/client";
+import { env } from "@/env";
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +20,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ❗ Ensure STRIPE_WEBHOOK_SECRET is set
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    const webhookSecret = env.STRIPE_WEBHOOK_SECRET;
     if (!webhookSecret) {
       console.error("Missing STRIPE_WEBHOOK_SECRET in environment variables");
       return new Response(

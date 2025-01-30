@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import CreateResumeBtn from "./CreateResumeBtn";
 import ResumeItem from "./ResumeItem";
 import { getTranslations } from "next-intl/server";
+import PaymentStatusMessage from "./PaymentStatusMessage";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Resumes");
@@ -50,6 +51,7 @@ export default async function Page() {
           ))}
         </div>
       </div>
+      <PaymentStatusMessage />
     </main>
   );
 }
