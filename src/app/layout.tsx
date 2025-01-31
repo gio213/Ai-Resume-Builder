@@ -82,7 +82,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       locale: "ka_GE",
       images: [
         {
-          url: "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738264582/resume-prew-geo_mjhbkc.png", // Update with your actual OG image path
+          url: "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738314619/vector_copy_tbyehp.jpg", // Update with your actual OG image path
           width: 1200,
           height: 630,
           alt: t("AI Resume Builder Interface"),
@@ -98,7 +98,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
         "Build impressive resumes instantly with AI powered tools Free templates customization options and professional resume summary writing assistance",
       ),
       images: [
-        "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738264582/resume-prew-geo_mjhbkc.png",
+        "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738314619/vector_copy_tbyehp.jpg",
       ], // Update with your actual Twitter image path
     },
     facebook: {

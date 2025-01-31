@@ -3,18 +3,20 @@ import Image from "next/image";
 import resumePrevwEng from "@/assets/resume-prew-en.webp";
 import resumePrevwGeo from "@/assets/resume-prew-geo.webp";
 import { useCookies } from "next-client-cookies";
-import vector from "@/assets/vector.webp";
 import dottBg from "@/assets/dotted-pattern.webp";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import NavBar from "./(main)/NavBar";
 import { useEffect, useState } from "react";
-
+import { useTheme } from "next-themes";
+import newvector from "@/assets/rb_5166.png";
 export default function Home() {
   const t = useTranslations("Home");
   const cookies = useCookies();
   const [resumePrew, setResumePrew] = useState(resumePrevwGeo);
+  const { theme } = useTheme();
+  console.log("theme", theme);
 
   useEffect(() => {
     const locale = cookies.get("locale") || "ka";
@@ -43,7 +45,7 @@ export default function Home() {
         <div className="flex max-w-prose flex-col items-center justify-center space-y-6 md:items-start">
           <Image
             loader={({ src }) => src}
-            src={vector}
+            src={newvector}
             alt="Logo"
             width={350}
             height={150}
@@ -72,13 +74,9 @@ export default function Home() {
             loader={({ src }) => src}
             src={resumePrew}
             alt="Resume preview"
-            width={400}
+            width={450}
             height={600}
             className="transform animate-[drop_1.5s_ease-in-out_forwards,settle_0.5s_ease-in-out_1.5s_forwards] shadow-2xl"
-            style={{
-              boxShadow:
-                "0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.1)",
-            }}
           />
 
           <style jsx global>{`
