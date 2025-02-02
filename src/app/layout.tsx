@@ -67,10 +67,6 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     alternates: {
       canonical: baseUrl,
-      languages: {
-        "en-US": `${baseUrl}/en`,
-        "ka-GE": `${baseUrl}/ka`,
-      },
     },
 
     openGraph: {
@@ -151,13 +147,13 @@ export default async function RootLayout({
           <meta name="category" content="Career Tools" />
           <meta name="creator" content="Giorgi Patsia" />
           <meta name="generator" content="Next.js" />
-          <link rel="canonical" href="https://www.resumes.ge" />
+          <link rel="canonical" href="https://resumes.ge" />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Resumes.ge",
-              url: "https://www.resumes.ge",
+              url: "https://resumes.ge",
               potentialAction: {
                 "@type": "SearchAction",
                 target: "https://www.resumes.ge/search?q={search_term_string}",
