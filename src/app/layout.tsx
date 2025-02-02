@@ -148,6 +148,26 @@ export default async function RootLayout({
           <meta name="creator" content="Giorgi Patsia" />
           <meta name="generator" content="Next.js" />
           <link rel="canonical" href="https://resumes.ge" />
+          <link rel="icon" href="/favicon.ico" />
+          <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+          />
+          <link rel="manifest" href="/site.webmanifest" />
+
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
@@ -156,7 +176,7 @@ export default async function RootLayout({
               url: "https://resumes.ge",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://www.resumes.ge/search?q={search_term_string}",
+                target: "https://resumes.ge/search?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             })}
