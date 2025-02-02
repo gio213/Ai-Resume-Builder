@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { CookiesProvider } from "next-client-cookies/server";
+import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -127,7 +128,30 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang={locale} suppressHydrationWarning>
-        <head>
+        <Head>
+          <title>Professional AI Resume Builder</title>
+          <meta
+            name="description"
+            content="Create professional resumes instantly with our AI powered resume builder. Free customizable templates, AI resume summary writing, multiple export formats, and expert guidance. Build your perfect resume today."
+          />
+          <meta name="robots" content="index, follow" />
+          <meta
+            name="googlebot"
+            content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
+          />
+          <meta
+            name="application-name"
+            content="Professional AI Resume Builder"
+          />
+          <meta
+            name="keywords"
+            content="AI რეზიუმეს შეჯამება, რეზიუმეს ჩამოტვირთვა, მორგებული რეზიუმეს შემქმნელი"
+          />
+          <meta name="author" content="Giorgi Patsia" />
+          <meta name="category" content="Career Tools" />
+          <meta name="creator" content="Giorgi Patsia" />
+          <meta name="generator" content="Next.js" />
+          <link rel="canonical" href="https://www.resumes.ge" />
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://schema.org",
@@ -141,7 +165,7 @@ export default async function RootLayout({
               },
             })}
           </script>
-        </head>
+        </Head>
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"
