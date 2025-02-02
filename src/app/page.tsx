@@ -9,14 +9,12 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import NavBar from "./(main)/NavBar";
 import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import newvector from "@/assets/rb_5166.png";
+
 export default function Home() {
   const t = useTranslations("Home");
   const cookies = useCookies();
   const [resumePrew, setResumePrew] = useState(resumePrevwGeo);
-  const { theme } = useTheme();
-  console.log("theme", theme);
 
   useEffect(() => {
     const locale = cookies.get("locale") || "ka";
@@ -76,7 +74,7 @@ export default function Home() {
             alt="Resume preview"
             width={450}
             height={600}
-            className="transform animate-[drop_1.5s_ease-in-out_forwards,settle_0.5s_ease-in-out_1.5s_forwards] shadow-2xl"
+            className="transform animate-[drop_1.5s_ease-in-out_forwards,settle_0.5s_ease-in-out_1.5s_forwards] cursor-pointer shadow-2xl"
           />
 
           <style jsx global>{`
@@ -98,6 +96,17 @@ export default function Home() {
             }
 
             @keyframes settle {
+              0% {
+                transform: translateY(0) rotate(5deg) scale(1);
+              }
+              50% {
+                transform: translateY(-5px) rotate(6deg) scale(1);
+              }
+              100% {
+                transform: translateY(0) rotate(5deg) scale(1);
+              }
+            }
+            @keyframes hoverAnimation {
               0% {
                 transform: translateY(0) rotate(5deg) scale(1);
               }

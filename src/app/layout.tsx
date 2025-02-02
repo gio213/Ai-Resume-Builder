@@ -127,6 +127,21 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang={locale} suppressHydrationWarning>
+        <head>
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Resumes.ge",
+              url: "https://www.resumes.ge",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://www.resumes.ge/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            })}
+          </script>
+        </head>
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"

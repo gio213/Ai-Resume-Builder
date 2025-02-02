@@ -42,6 +42,7 @@ const ColorPicker = ({ color, onChange }: ColorPickerProps) => {
     "#ff6347",
     "#ff4500",
     "#daa520",
+    "#3b82f6",
     "#32cd32",
     "#4682b4", // Additional colors
     "#6a5acd",
