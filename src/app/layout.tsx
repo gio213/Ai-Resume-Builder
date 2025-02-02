@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations("Layout");
 
-  const baseUrl = "https://www.resumes.ge";
+  const baseUrl = "https://resumes.ge";
   const primaryKeywords = [
     "resume builder",
     "AI resume writer",
