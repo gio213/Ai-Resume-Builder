@@ -8,6 +8,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { CookiesProvider } from "next-client-cookies/server";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/next";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -191,6 +193,7 @@ export default async function RootLayout({
           >
             <NextIntlClientProvider messages={messages}>
               <CookiesProvider>{children}</CookiesProvider>
+              <Analytics />
             </NextIntlClientProvider>
             <Toaster />
           </ThemeProvider>
