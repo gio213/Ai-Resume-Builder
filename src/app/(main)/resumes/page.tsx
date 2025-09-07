@@ -1,6 +1,4 @@
-export const metadata = {
-  robots: { index: false, follow: false },
-};
+// Metadata is provided via generateMetadata below
 import prisma from "@/lib/prisma";
 import { resumeDataInclude } from "@/lib/types";
 import { auth } from "@clerk/nextjs/server";
@@ -15,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Resumes");
   return {
     title: t("Your resumes"),
+    robots: { index: false, follow: false },
   };
 }
 
