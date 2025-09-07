@@ -7,7 +7,6 @@ import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { CookiesProvider } from "next-client-cookies/server";
-import Head from "next/head";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,6 +38,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   ].join(", ");
 
   return {
+    metadataBase: new URL(baseUrl),
     title: {
       template: "%s | " + t("Professional AI Resume Builder"),
       absolute: t("Create Professional Resumes with AI Free Resume Builder"),
@@ -68,7 +68,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
     generator: "Next.js",
 
     alternates: {
-      canonical: baseUrl,
+      canonical: "/",
+      languages: {
+        "ka-GE": "/",
+        "en-US": "/",
+        "x-default": "/",
+      },
     },
 
     openGraph: {
@@ -100,9 +105,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
         "https://res.cloudinary.com/dimy1fj2c/image/upload/v1738314619/vector_copy_tbyehp.jpg",
       ], // Update with your actual Twitter image path
     },
-    facebook: {
-      appId: "965909851625158",
-    },
+    // facebook: {
+    //   appId: "965909851625158",
+    // },
 
     verification: {
       google: "rK9_-vqN901L4ekHjv0up-dujJGqARtF0_8qY6kvHMc",
@@ -112,6 +117,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
       "msapplication-TileColor": "#ffffff",
       "theme-color": "#ffffff",
     },
+    manifest: "/site.webmanifest",
   };
 };
 
@@ -126,64 +132,6 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang={locale} suppressHydrationWarning>
-        <Head>
-          <title>Professional AI Resume Builder</title>
-          <meta
-            name="description"
-            content="Create professional resumes instantly with our AI powered resume builder. Free customizable templates, AI resume summary writing, multiple export formats, and expert guidance. Build your perfect resume today."
-          />
-          <meta name="robots" content="index, follow" />
-          <meta
-            name="googlebot"
-            content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1"
-          />
-          <meta
-            name="application-name"
-            content="Professional AI Resume Builder"
-          />
-          <meta
-            name="keywords"
-            content="AI რეზიუმეს შეჯამება, რეზიუმეს ჩამოტვირთვა, მორგებული რეზიუმეს შემქმნელი"
-          />
-          <meta name="author" content="Giorgi Patsia" />
-          <meta name="category" content="Career Tools" />
-          <meta name="creator" content="Giorgi Patsia" />
-          <meta name="generator" content="Next.js" />
-          <link rel="canonical" href="https://resumes.ge" />
-          <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-          <link rel="manifest" href="/site.webmanifest" />
-
-          <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "Resumes.ge",
-              url: "https://resumes.ge",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: "https://resumes.ge/search?q={search_term_string}",
-                "query-input": "required name=search_term_string",
-              },
-            })}
-          </script>
-        </Head>
         <body className={inter.className}>
           <ThemeProvider
             attribute="class"

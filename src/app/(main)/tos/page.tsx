@@ -5,6 +5,13 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("TermsAndConditions");
   return {
     title: t("Terms of Service"),
+    description: t(
+      "Read the terms that govern the use of our AI resume builder service.",
+    ),
+    alternates: {
+      canonical: "/tos",
+      languages: { "ka-GE": "/tos", "en-US": "/tos" },
+    },
   };
 }
 

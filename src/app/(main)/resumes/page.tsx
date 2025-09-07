@@ -1,3 +1,6 @@
+export const metadata = {
+  robots: { index: false, follow: false },
+};
 import prisma from "@/lib/prisma";
 import { resumeDataInclude } from "@/lib/types";
 import { auth } from "@clerk/nextjs/server";
